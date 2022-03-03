@@ -1,0 +1,20 @@
+.vertical-centre {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+button:hover {
+    background-color: #5e8ab4 !important;
+    color: #162a53 !important;;
+}
+
+.menu-option-btn {
+    color: white !important;
+    background-color: #162a53 !important;
+    font-weight: bold;
+    width: 40% !important;
+}
