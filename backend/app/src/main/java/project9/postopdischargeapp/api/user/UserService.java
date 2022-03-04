@@ -1,9 +1,7 @@
-package project9.postopdischargeapp.users;
+package project9.postopdischargeapp.api.user;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService {
@@ -14,7 +12,7 @@ public class UserService {
         this.repo = repo;
     }
 
-    public List<User> getAllUsers() {
-        return this.repo.getAllUsers();
+    public User getUserById(int userId) {
+        return this.repo.getUserById(userId);
     }
 }
