@@ -3,9 +3,9 @@ import { FaUserCircle } from 'react-icons/fa'
 
 const Navbar = () => {
   return (
-
     <div>
-    <nav className="navbar navbar-expand-lg navbar-light justify-content-between w-100" style={{"backgroundColor": "#e9ecef","top":0, "height":"75px"}}></nav>
+        <nav className="navbar navbar-expand-lg navbar-light justify-content-between w-100" style={{"backgroundColor": "#e9ecef","top":0, "height":"75px"}}></nav>
+        
         <nav className="navbar navbar-expand-lg navbar-light justify-content-between w-100" style={{"backgroundColor": "#e9ecef", "position":"fixed", "top":0, "height":"75px"}}>
             <a className="navbar-brand mx-3 fs-3" style={{"color": "#162a53"}} href="/"><FaUserCircle /></a>
 
