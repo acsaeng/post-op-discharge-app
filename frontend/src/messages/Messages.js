@@ -47,7 +47,8 @@ export default class Messages extends Component{
                   </div>   
             </div>
 
-            <label className="d-flex flex-row input-field justify-content-between">
+            {/* <label className="d-flex flex-row input-field justify-content-between"> */}
+            <label className="d-flex flex-row input-field">
                 <IconContext.Provider value={{className:'camera-icon'}}>
                     <div className="cam-wrapper mx-3">
                       <FaCamera title="Attach a Photo"/>
@@ -55,8 +56,8 @@ export default class Messages extends Component{
                 </IconContext.Provider>
                 {/* <input className="form-control mx-3 my-2" id="commentInput" type="text" required onChange={getData} onKeyDown={handleKeyDown} size="100" placeholder="Enter a message" />
                 <button className="btn btn-secondary mx-2 my-2" type="submit" onClick={clickButton}>Send</button> */}
-                <input className="form-control mx-2 my-2" id="commentInput" type="text" required size="100" placeholder="Enter a message" />
-                <button className="btn btn-secondary mx-2 my-2" type="submit">Send</button>
+                <input className="message-input mx-2 my-2 w-100" id="commentInput" type="text" required size="100" placeholder="   Enter a message" />
+                <button className="btn btn-secondary mx-2 my-2 message-send" type="submit">Send</button>
             </label>
             
 

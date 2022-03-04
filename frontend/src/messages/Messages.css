@@ -20,12 +20,12 @@
     height: 50px;
 }
 
-button[type=submit]{
+button[type=submit].message-send{
     background-color: rgb(54, 54, 202);
     border-radius: 25px;
   }
 
-  input.form-control{
+  input.message-input{
     border-radius: 25px;
   }
 
