@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = "/")
 public class UserController {
 
@@ -14,7 +15,7 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping(path = "/user/{userID}")
+    @GetMapping(path = "user/{userID}")
     @ResponseBody
     public User getUserById(@PathVariable("userID") int userId) {
         return this.service.getUserById(userId);

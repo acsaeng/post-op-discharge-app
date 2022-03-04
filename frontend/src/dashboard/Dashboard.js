@@ -12,8 +12,8 @@ const Dashboard = () => {
         <div className='h-100'>
                 <Navbar />
 
-                <div className="d-flex align-items-center flex-column">
-                    <button className="menu-option-btn mt-5 m-1 py-4 btn fw-bold" onClick={() => navigate("/education")}>
+                <div className="d-flex align-items-center flex-column" style={{marginTop: "15vh"}}>
+                    <button className="menu-option-btn m-1 py-4 btn fw-bold" onClick={() => navigate("/education")}>
                         <FaBook /><br/>Education
                     </button>
 
