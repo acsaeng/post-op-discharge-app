@@ -13,65 +13,40 @@ export default class MessagesBox extends Component{
         
         //array holding all the messages for this user
         messages:[],
-
-        // scrollPosition:this.props.scrollPosition
     }
 
     //get all messages for one patient
     componentDidMount(){
         this.getAllMessages();
-        // axios.get('http://localhost:8081/messages/'+this.state.patientId).then(
-        //     res => {
-        //         console.log(res);
-        //         this.setState({messages: res.data});
-        //         console.table(this.state.messages);
-        //     });
-            // this.handleScrollPosition();
-        this.scrollToBottom();
+        // this.scrollToBottom();
+        this.messagesEnd.scrollIntoView({ behavior: "auto" });
 
-        // this.state.patientId = 8;
 
-        // setInterval(this.getAllMessages, 1000)
+        setInterval(this.getAllMessages, 1000)
 
     }
 
     getAllMessages = () => {
-        console.log('get all messages')
-
-        let patientId = 8; //dynamically update this in the future!!!!!
+        // console.log('get all messages')
+        let patientId = 8; //This needs to be updated to be dynamic!!!
 
         axios.get('http://localhost:8081/messages/'+ patientId).then(
             res => {
-                console.log('returned result')
+                console.log('refreshed -> got latest messages from db')
                     this.setState({messages: res.data});
                     // console.table(this.state.messages);
                 }
             );
     }
 
-        // handle scroll position after content load
-    handleScrollPosition() {
-        const scrollPosition = sessionStorage.getItem("scrollPosition");
-        if (scrollPosition) {
-        window.scrollTo(0, parseInt(scrollPosition));
-        // sessionStorage.removeItem("scrollPosition");
-        }
-    };
-
-    // checkPosition(){
-    //     console.log("window.pageYOffset")
-    //     console.log(window.pageYOffset)
-    // }
-
     scrollToBottom = () => {
-        // this.messagesEnd.scrollIntoView({ behavior: "smooth" });
         this.messagesEnd.scrollIntoView({ behavior: "auto" });
-      }
+    }
       
       
-      componentDidUpdate() {
+    componentDidUpdate() {
         this.scrollToBottom();
-      }
+    }
 
     render(){
         return(
@@ -92,9 +67,7 @@ export default class MessagesBox extends Component{
               
             )}
           </div>
-          {/* <button onClick={this.checkPosition}>check position</button> */}
-          <div ref={(el) => { this.messagesEnd = el; }}>
-            </div>
+          <div ref={(el) => { this.messagesEnd = el; }}></div>
         </div>
         )
     }

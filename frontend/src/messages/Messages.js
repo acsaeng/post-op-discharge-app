@@ -18,22 +18,8 @@ function Messages() {
   const [message, setData] = useState('');
   const [originalVal, setOriginalVal] = useState('');
 
-
   const [senderId, setSenderId] = useState(8); //This needs to be updated to be dynamic!!!
   const [patientId, setPatientId] = useState(8); //This needs to be updated to be dynamic!!!
-  const [keyMessageRefresh, setKeyMessageRefresh] = useState(0);
-
-  // this.state = {
-  //   //id of current user
-  //   userId: 8, //This needs to be updated to be dynamic!!!
-  //   patientId:8,
-  //   scrollPosition:0,
-    
-  //   //array holding all the messages for this user
-  //   messages:[]
-  // }
-
-  
 
   //update the state on change
   function getData(val){
@@ -42,29 +28,16 @@ function Messages() {
     // console.warn(val.target.value)
   }  
 
-  //when the enter key is hit, get the information and create new comment on database
-  function handleKeyDown(event){
-        
-    if (event.key === 'Enter'){ 
-      setData(originalVal)
-      document.getElementById("messageInput").value = ""
-      console.log("From hitting the enter key: "+message)
-      // event.preventDefault();
-      
-      postNewMessage(event)
-    }
-  }
+
 
   function getFormattedLocalDateTime(){
     var rightNow = new Date();
     var formatedDay = rightNow.getDate()<10 ? "0"+rightNow.getDate().toString():rightNow.getDate()
     var formatedMonth = (rightNow.getMonth()+1)<10 ? "0"+(rightNow.getMonth()+1).toString():(rightNow.getMonth()+1)
-    console.log(rightNow.getHours())
     var formattedMinutes = rightNow.getMinutes() < 10 ? "0"+rightNow.getMinutes().toString() : rightNow.getMinutes().toString()
     var formattedSeconds = rightNow.getSeconds() < 10 ? "0"+rightNow.getSeconds().toString() : rightNow.getSeconds().toString()
-    // var dateTime = rightNow.getFullYear() + "-" + formatedMonth +"-" + formatedDay +" "+ hours12 +":"+ formattedMinutes +" "+ AMPM
     var dateTime = rightNow.getFullYear() + "-" + formatedMonth +"-" + formatedDay +" "+ rightNow.getHours() +":"+ formattedMinutes+":"+formattedSeconds
-
+    // console.log('dateTime = '+dateTime);
     return dateTime;
   }
 
@@ -84,9 +57,22 @@ function Messages() {
 
     }).then(
       res => {
-          console.log(res);
+          // console.log(res);
       } )
 
+  }
+
+  //when the enter key is hit, get the information and create new comment on database
+  function handleKeyDown(event){
+      
+    if (event.key === 'Enter'){ 
+      setData(originalVal)
+      document.getElementById("messageInput").value = ""
+      // console.log("From hitting the enter key: "+message)
+      // event.preventDefault();
+      
+      postNewMessage(event)
+    }
   }
 
   //when the submit button is clicked, get the information and create new comment on database
@@ -94,7 +80,7 @@ function Messages() {
     event.preventDefault();
     setData(originalVal)
     document.getElementById("messageInput").value = ""
-    console.log("From Clicking the button: "+message)
+    // console.log("From Clicking the button: "+message)
     postNewMessage(event)
   }
 
