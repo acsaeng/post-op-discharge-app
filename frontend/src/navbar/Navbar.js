@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaHome, FaUserCircle } from 'react-icons/fa'
+import { FaHome, FaUserCircle,FaDoorOpen } from 'react-icons/fa'
 
 
 const Navbar = () => {
@@ -11,6 +11,7 @@ const Navbar = () => {
             <div className="d-flex flex-row">
                 <a className="navbar-brand mx-3 fs-3" style={{"color": "#162a53"}} href="/dashboard"><FaHome /></a>
                 <a className="navbar-brand fs-3" style={{"color": "#162a53"}} href="/user-info"><FaUserCircle /></a>
+                <a className="navbar-brand fs-3" style={{"color": "#162a53"}} href="/"><FaDoorOpen /></a>
             </div>
 
             
