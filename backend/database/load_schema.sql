@@ -31,6 +31,19 @@ CREATE TABLE PROCEDURES (
     foreign key (Patient_ID) references USERS(User_ID) 
 );
 
+DROP TABLE IF EXISTS PROCEDURES; 
+CREATE TABLE PROCEDURES ( 
+	Procedure_ID				int not null,
+    Title						varchar(50) not null,
+    Procedure_Description		varchar(50) not null,
+    Assigner_ID					int not null,
+    Patient_ID					int not null,
+
+    primary key (Procedure_ID),
+	foreign key (Assigner_ID) references USERS(User_ID),
+    foreign key (Patient_ID) references USERS(User_ID) 
+);
+
 
 DROP TABLE IF EXISTS PROCEDURE_VIDEO; 
 CREATE TABLE PROCEDURE_VIDEO ( 
@@ -111,4 +124,15 @@ CREATE TABLE APPOINTMENT (
     primary key (Appointment_ID),
 	foreign key (Assigner_ID) references USERS(User_ID),
     foreign key (Patient_ID) references USERS(User_ID) 
+);
+
+DROP TABLE IF EXISTS PHOTOS; 
+CREATE TABLE PHOTOS ( 
+	Photo_ID				int not null,   
+    Client_ID				int not null,
+    Upload_Datetime			datetime,
+    Photo					blob,
+
+    primary key (Photo_ID),
+	foreign key (Client_ID) references USERS(User_ID)
 );
