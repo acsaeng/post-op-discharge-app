@@ -10,12 +10,17 @@ const Appointments = (props) => {
   const [loadedAppointments, setLoadedAppointments] = useState([]);
   const [displayModal, setModal] = useState(false);
 
+  const [senderId, setSenderId] = useState(window.localStorage.getItem("userId"));
+  const [userType, setUserType] = useState(window.localStorage.getItem("userType"));
+  const [patientId, setPatientId] = useState(Number(window.localStorage.getItem("patientId")));
+
+
   /* fetch appointments from data
   and setLoadedAppointments with an array of appointments */
   function fetchAppointments() {
     setIsLoading(true);
 
-    let url = "http://localhost:8080/appointment/" + props.role + "_" + props.userID;
+    let url = "http://localhost:8080/appointment/" + userType + "_" + senderId;
 
     console.log(url);
     fetch(
@@ -60,7 +65,7 @@ const Appointments = (props) => {
     <section>
       <Navbar />
       <AppointmentList appointments={loadedAppointments} />
-      <AppointmentStaticModal reload={setIsLoading} role={props.role} />
+      <AppointmentStaticModal reload={setIsLoading} role={userType} />
     </section>
   );
 };
