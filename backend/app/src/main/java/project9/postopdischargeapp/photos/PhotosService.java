@@ -18,9 +18,11 @@ public class PhotosService {
     }
     
 
-//	public int addPhoto(Photos newPhoto) {
 	public int addPhoto( MultipartFile multipartFile, int clientId) {
 		return this.repo.addPhoto(multipartFile, clientId);
-		
+	}
+	
+	public Photos getSinglePhoto(int photoId) {
+		return this.repo.getSinglePhoto(photoId);
 	}
 }

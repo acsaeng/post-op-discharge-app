@@ -34,9 +34,10 @@ function Messages() {
     var rightNow = new Date();
     var formatedDay = rightNow.getDate() < 10 ? "0" + rightNow.getDate().toString() : rightNow.getDate()
     var formatedMonth = (rightNow.getMonth() + 1) < 10 ? "0" + (rightNow.getMonth() + 1).toString() : (rightNow.getMonth() + 1)
+    var formatteHours = rightNow.getHours() < 10 ? "0" + rightNow.getHours().toString() : rightNow.getHours().toString()
     var formattedMinutes = rightNow.getMinutes() < 10 ? "0" + rightNow.getMinutes().toString() : rightNow.getMinutes().toString()
     var formattedSeconds = rightNow.getSeconds() < 10 ? "0" + rightNow.getSeconds().toString() : rightNow.getSeconds().toString()
-    var dateTime = rightNow.getFullYear() + "-" + formatedMonth + "-" + formatedDay + " " + rightNow.getHours() + ":" + formattedMinutes + ":" + formattedSeconds
+    var dateTime = rightNow.getFullYear() + "-" + formatedMonth + "-" + formatedDay + " " + formatteHours + ":" + formattedMinutes + ":" + formattedSeconds
     // console.log('dateTime = '+dateTime);
     return dateTime;
   }
