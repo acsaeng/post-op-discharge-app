@@ -1,5 +1,7 @@
 import { React, useState } from 'react'
 import DataTable from 'react-data-table-component';
+import { useNavigate } from "react-router-dom";
+
 import axios from 'axios';
 
 import Navbar from '../navbar/Navbar'
@@ -45,6 +47,13 @@ const PatientList = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [patientData, setPatientData] = useState([]);
 
+    const navigate = useNavigate();
+
+    function clickFunc(patientId){
+        console.log('clicked ')
+        // navigate("/dashboard?patientId=" + patientId)
+    }
+
     function loadPatientData() {
         if(isLoading) {
             axios.get("http://localhost:8081/patients/red")
@@ -52,7 +61,9 @@ const PatientList = () => {
                 let patients = response.data;
 
                 for (let i = 0; i < patients.length; i++) {
-                    patients[i].actions = <a href="/dashboard">Edit Treatment</a>
+                    // patients[i].actions = <a href="/dashboard">Edit Treatment</a>
+                    patients[i].actions = <a href={"/dashboard?patientId=" + patients[i].userId} onClick={clickFunc}>Edit Treatment</a>
+                    // patients[i].actions = <button onClick={clickFunc(patients[i].userId)}>Edit Treatment</button>
                 }
                 
                 setPatientData(patients);

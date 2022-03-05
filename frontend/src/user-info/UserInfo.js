@@ -4,13 +4,18 @@ import { FaUserCircle } from 'react-icons/fa'
 
 import Navbar from '../navbar/Navbar'
 
+import { useSelector } from 'react-redux';
+
+
 const UserInfo = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [userInfo, setUserInfo] = useState({});
+  const [userId, setUserId] = useState(useSelector(state => state[0])); 
+
 
     function loadUserData() {
         if(isLoading) {
-            axios.get("http://localhost:8081/user/1")
+            axios.get("http://localhost:8081/user/"+userId)
             .then(response => {
                 const info = response.data;
 
