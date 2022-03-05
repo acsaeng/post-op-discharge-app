@@ -34,7 +34,9 @@ VALUES
 ('19', '2022-03-04 10:00:00', 'start of convo2', '0', '1', '3'),
 ('20', '2022-03-04 10:00:00', 'end of convo2', '0', '1', '3');
 
-
+INSERT INTO Procedures (Title, Procedure_Description, Assigner_ID, Patient_ID) 
+VALUES
+('Transsphenoidal Resection', 'Removal of the tumor is performed through the nasal passage.', 2, 3);
 
 
 

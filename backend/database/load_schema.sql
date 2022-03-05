@@ -20,9 +20,9 @@ CREATE TABLE USERS (
 
 DROP TABLE IF EXISTS PROCEDURES; 
 CREATE TABLE PROCEDURES ( 
-	Procedure_ID				int not null,
-    Title						varchar(50) not null,
-    Procedure_Description		varchar(50) not null,
+	Procedure_ID				int not null auto_increment,
+    Title						varchar(100) not null,
+    Procedure_Description		varchar(500) not null,
     Assigner_ID					int not null,
     Patient_ID					int not null,
 
@@ -33,7 +33,7 @@ CREATE TABLE PROCEDURES (
 
 DROP TABLE IF EXISTS PROCEDURE_VIDEO; 
 CREATE TABLE PROCEDURE_VIDEO ( 
-	Procedure_ID	int not null,
+	Procedure_ID	int not null auto_increment,
     Link			varchar(50) not null,
 
     primary key (Procedure_ID, Link),
@@ -42,10 +42,9 @@ CREATE TABLE PROCEDURE_VIDEO (
 
 DROP TABLE IF EXISTS RECOVERY; 
 CREATE TABLE RECOVERY ( 
-	Recovery_ID		int not null,
-    
-    # ADD ADDITIONAL INFO
-    
+	Recovery_ID		int not null auto_increment,
+    Title						varchar(100) not null,
+    Recovery_Description		varchar(500) not null,
     Assigner_ID					int not null,
     Patient_ID					int not null,
 
