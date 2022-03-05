@@ -20,6 +20,7 @@ export default class MessagesBox extends Component{
         this.getAllMessages();
         // this.scrollToBottom();
         this.messagesEnd.scrollIntoView({ behavior: "auto" });
+        console.log('Mounted component, loaded the messages the 1st time')
 
 
         setInterval(this.getAllMessages, 1000)
@@ -32,20 +33,20 @@ export default class MessagesBox extends Component{
 
         axios.get('http://localhost:8081/messages/'+ patientId).then(
             res => {
-                console.log('refreshed -> got latest messages from db')
-                    //if there are more messages on the database than on display then update the messages state
-                    if ( res.data.length  > this.state.messages.length ){
-                        //Another if statement can be added here
-                        //if the newest messages are not from the user
-                        //then shift the screen up a certain number of pixels
-                        //maybe also add a check so that this only happens if you
-                        //are at the bottom of the autoscroll
+                // console.log('refreshed -> got latest messages from db')
+                //if there are more messages on the database than on display then update the messages state
+                if ( res.data.length  > this.state.messages.length ){
+                    //Another if statement can be added here
+                    //if the newest messages are not from the user
+                    //then shift the screen up a certain number of pixels
+                    //maybe also add a check so that this only happens if you
+                    //are at the bottom of the autoscroll
 
 
 
 
-                        this.setState({messages: res.data});
-                        // console.table(this.state.messages);
+                    this.setState({messages: res.data});
+                    // console.table(this.state.messages);
                     }
                 }
             );

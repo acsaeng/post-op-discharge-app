@@ -27,6 +27,7 @@ button[type=submit].message-send{
 
 input.message-input{
     border-radius: 25px;
+    padding-left:25px;
 }
 
 div.cam-wrapper{
@@ -47,3 +48,11 @@ div.cam-wrapper{
     display:block;
 }
 
+.image-upload > input{
+    display:none;
+    
+}
+input[type=file]{
+    display:none;
+    
+}
