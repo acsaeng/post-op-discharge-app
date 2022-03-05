@@ -8,8 +8,8 @@ function AppointmentStaticModal(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-      setShow(false);
-    };
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   const titleInputRef = useRef();
@@ -20,6 +20,18 @@ function AppointmentStaticModal(props) {
   const patientInputRef = useRef();
   const assignerInputRef = useRef();
   const commentsInputRef = useRef();
+
+  function addAppointment(appointmentData) {
+    /* Firebase: whatever comes after the domain -> .com/ , e.g. meetups, will be translated to folder or table.
+    Firebase expect .json at the end. */
+    fetch("http://localhost:8080/appointment/", {
+      method: "POST",
+      body: JSON.stringify(appointmentData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -43,12 +55,13 @@ function AppointmentStaticModal(props) {
       Assigner_ID: enteredAssigner,
     };
 
-    //props.onAddAppointment(appointmentData);
+    console.log(appointmentData);
+    addAppointment(appointmentData);
   }
 
   return (
     <>
-      <button onClick={()=>handleShow()}>Add Appointment</button>
+      <button onClick={() => handleShow()}>Add Appointment</button>
       <Modal
         show={show}
         onHide={handleClose}

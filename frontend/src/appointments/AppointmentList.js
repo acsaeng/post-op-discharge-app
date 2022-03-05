@@ -6,13 +6,16 @@ function AppointmentList(props) {
       {props.appointments.map((appointment) => (
         <div key={appointment.id}>
           <AppointmentCard
-            key={appointment.key}
-            id={appointment.id}
-            date={appointment.date}
-            time={appointment.time}
-            location={appointment.location}
-            comment={appointment.comment}
-            title={appointment.title}
+            id={appointment.Appointment_ID}
+            appointment_id={appointment.Appointment_ID}
+            date={appointment.Appointment_Datetime}
+            time={appointment.Appointment_Datetime}
+            location={appointment.Location}
+            comments={appointment.Comments}
+            title={appointment.Title}
+            assigner_id={appointment.Assigner_ID}
+            patient_id={appointment.Patient_ID}
+            phone_num={appointment.Phone_Num}
           />
         </div>
       ))}

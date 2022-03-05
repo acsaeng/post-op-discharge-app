@@ -21,19 +21,19 @@ function AppointmentForm(props) {
     const enteredPatient = patientInputRef.current.value;
     const enteredAssigner = assignerInputRef.current.value;
     const enteredComments = commentsInputRef.current.value;
-    
+
     const appointmentData = {
-        Appointment_ID:0,
-        Title:enteredTitle,
-        Appointment_Datetime:enteredDate+' '+enteredTime+':00',
-        Location: enteredLocation,
-        Phone_Num: enteredPhone,
-        Comments: enteredComments,
-        Patient_ID: enteredPatient,
-        Assigner_ID: enteredAssigner
-      }
-  
-      //props.onAddAppointment(appointmentData);
+      Appointment_ID: 0,
+      Title: enteredTitle,
+      Appointment_Datetime: enteredDate + ' ' + enteredTime + ':00',
+      Location: enteredLocation,
+      Phone_Num: enteredPhone,
+      Comments: enteredComments,
+      Patient_ID: enteredPatient,
+      Assigner_ID: enteredAssigner
+    }
+
+    //props.onAddAppointment(appointmentData);
   }
 
   return (
