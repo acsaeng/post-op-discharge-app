@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Proceedure = () => {
+const Recovery = () => {
   return (
-    <div>Proceedure</div>
+    <div>Recovery</div>
   )
 }
 
-export default Proceedure
+export default Recovery
