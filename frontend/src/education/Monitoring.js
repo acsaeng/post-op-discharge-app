@@ -45,7 +45,7 @@ const Monitoring = () => {
         <div className='h-100'>
             <Navbar />
             <section className = 'd-flex align-items-center'>
-                <MonitoringList entires = {patientData}/>
+                {patientData.length>0? <MonitoringList entires = {patientData}/>:<h1 className = 'd-flex align-items-center'>No Monitoring entries for Patient</h1>}
             </section>
         </div>
     )
