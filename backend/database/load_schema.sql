@@ -84,19 +84,17 @@ CREATE TABLE MEDICATION (
     foreign key (Patient_ID) references USERS(User_ID) 
 );
 
-DROP TABLE IF EXISTS MESSAGE; 
-CREATE TABLE MESSAGE ( 
+DROP TABLE IF EXISTS MESSAGES; 
+CREATE TABLE MESSAGES ( 
 	Message_ID		int not null,   
     Datetime_Sent	datetime,
-    Content			varchar(50) not null,
-    Duration		varchar(50) not null,
-    Frequency		varchar(50) not null,
+    Message			varchar(50) not null,
+    Attachment_id   int,
     Sender_ID		int not null,
-    Recipient_ID	int not null,
-
+	Patient_ID		int not null,
+    
     primary key (Message_ID),
-	foreign key (Sender_ID) references USERS(User_ID),
-    foreign key (Recipient_ID) references USERS(User_ID) 
+	foreign key (Sender_ID) references USERS(User_ID)
 );
 
 DROP TABLE IF EXISTS APPOINTMENT; 
