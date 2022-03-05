@@ -1,29 +1,49 @@
 import axios from 'axios';
-import React, {Component} from "react"
+import React, { Component } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Messages.css';
 
 
-export default class MessagesBox extends Component{
+export default class MessagesBox extends Component {
 
     state = {
         //id of current user
         userId: 8, //This needs to be updated to be dynamic!!!
-        patientId:8,
-        
+        patientId: 8,
+
         //array holding all the messages for this user
-        messages:[],
+        messages: [],
+        arrPhotos: [],
+        imgUrls: []
     }
 
     //get all messages for one patient
-    componentDidMount(){
+    componentDidMount() {
         this.getAllMessages();
         // this.scrollToBottom();
         this.messagesEnd.scrollIntoView({ behavior: "auto" });
         console.log('Mounted component, loaded the messages the 1st time')
 
+        this.getAnyPhotos()
+        // setInterval(this.getAllMessages, 1000)
 
-        setInterval(this.getAllMessages, 1000)
+    }
+
+    getAnyPhotos = () => {
+        let photoId = 1; // this needs to be replaced. search through messages array and see if any message has photoId
+
+
+        axios.get('http://localhost:8081/photos/' + photoId).then(
+            res => {
+                console.log(res)
+                // console.log(res.data.photo)
+                this.state.arrPhotos.push(res.data.photo)
+                var binaryData = [];
+                binaryData.push(res.data.photo);
+                this.state.imgUrls.push(URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})))
+             }
+            
+        )
 
     }
 
@@ -31,11 +51,11 @@ export default class MessagesBox extends Component{
         // console.log('get all messages')
         let patientId = 8; //This needs to be updated to be dynamic!!!
 
-        axios.get('http://localhost:8081/messages/'+ patientId).then(
+        axios.get('http://localhost:8081/messages/' + patientId).then(
             res => {
                 // console.log('refreshed -> got latest messages from db')
                 //if there are more messages on the database than on display then update the messages state
-                if ( res.data.length  > this.state.messages.length ){
+                if (res.data.length > this.state.messages.length) {
                     //Another if statement can be added here
                     //if the newest messages are not from the user
                     //then shift the screen up a certain number of pixels
@@ -45,44 +65,48 @@ export default class MessagesBox extends Component{
 
 
 
-                    this.setState({messages: res.data});
+                    this.setState({ messages: res.data });
                     // console.table(this.state.messages);
-                    }
                 }
-            );
+            }
+        );
     }
 
     scrollToBottom = () => {
         this.messagesEnd.scrollIntoView({ behavior: "auto" });
     }
-      
-      
+
+
     componentDidUpdate() {
         this.scrollToBottom();
     }
 
-    render(){
-        return(
-        <div className="message-box">
-          <div>
-            {this.state.messages.map( messageObj =>
-              (messageObj.senderId === this.state.userId) ?
-              <div className="d-flex flex-row py-2 mx-2" key={messageObj.messageId}>
-                <div className="message-single bg-primary text-white px-3">
-                    {messageObj.message}
+    render() {
+        return (
+            <div className="message-box">
+                <div>
+                    {this.state.messages.map(messageObj =>
+                        (messageObj.senderId === this.state.userId) ?
+                            <div className="d-flex flex-row py-2 mx-2" key={messageObj.messageId}>
+                                <div className="message-single bg-primary text-white px-3">
+                                    {messageObj.message}
+                                </div>
+                            </div> :
+                            <div className="d-flex flex-row py-2 mx-2 justify-content-end" key={messageObj.messageId}>
+                                <div className="message-single bg-light px-3">
+                                    {messageObj.message}
+                                </div>
+                            </div>
+
+                    )}
                 </div>
-              </div> :  
-              <div className="d-flex flex-row py-2 mx-2 justify-content-end" key={messageObj.messageId}>
-                  <div className="message-single bg-light px-3">
-                    {messageObj.message}
-                  </div>
-              </div>
-              
-            )}
-          </div>
-          <div ref={(el) => { this.messagesEnd = el; }}></div>
-        </div>
+                <div>
+                    <img src={this.state.imgUrls[0]}>
+                    </img>
+                </div>
+                <div ref={(el) => { this.messagesEnd = el; }}></div>
+            </div>
         )
     }
-  
+
 }
