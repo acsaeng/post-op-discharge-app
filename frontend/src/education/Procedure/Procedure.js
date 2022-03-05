@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import  { React, useState, useEffect } from 'react'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../../navbar/Navbar';
-import ProceduresList from './ProceduresList';
 
 const Procedure = () => {
 
@@ -13,18 +12,20 @@ const Procedure = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [procedures, setProcedures] = useState({});
 
+  const [userInfo, setUserInfo] = useState({});
+
   function loadProcedures() {
     if(isLoading) {
-        // axios.get('http://localhost:8081/patientId='+patientId+'/education/procedures/')
-        axios.get('http://localhost:8081/patientId=3/education/procedures/')
+        axios.get('http://localhost:8081/patientId='+patientId+'/education/procedures/')
         .then(response => {
             const procedure = response.data;
-            console.log(procedure.title)
+            console.log(procedure[0])
             setProcedures({
-                title: procedure.title,
-                description: procedure.description,
-                assignerId: procedure.assignerId,
-                patientId: procedure.patientId
+                title: procedure[0].title,
+                description: procedure[0].description,
+                link: procedure[0].link,
+                assignerId: procedure[0].assignerId,
+                patientId: procedure[0].patientId
             });
         }).catch(err => console.log(err));
         setIsLoading(false);
@@ -74,12 +75,15 @@ const Procedure = () => {
   return (
     <div className='h-100'>
       <Navbar />
-      <div className="d-flex align-items-center flex-column" style={{marginTop: "15vh"}}>
+      <div className="d-flex align-items-center flex-column" style={{marginTop: "5vh"}}>
         <h4>My Procedure</h4>
           <div className="card p-3">
               <div className="card-body">
-                  <h5 className="card-title">{procedures.title}TEST</h5>
-                  <div className="card-text">{procedures.description}DFSDFSD</div>
+                  <h5 className="card-title">{procedures.title}</h5>
+                  <div className="card-text">{procedures.description}</div>
+                  <div>
+                    <a className="pt-3" href={procedures.link}>{procedures.link}</a>
+                  </div>
               </div>
           </div>
       </div>

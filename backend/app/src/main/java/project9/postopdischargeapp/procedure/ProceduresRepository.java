@@ -37,6 +37,7 @@ public class ProceduresRepository {
             	procedures.add(new Procedures(
                         results.getString("title"),
                         results.getString("procedure_description"),
+                        results.getString("link"),
                         results.getInt("assigner_id"),
                         results.getInt("patient_id")));
             }
@@ -63,6 +64,7 @@ public class ProceduresRepository {
             	requestedProcedure.add(new Procedures(
                         results.getString("title"),
                         results.getString("procedure_description"),
+                        results.getString("link"),
                         results.getInt("assigner_id"),
                         results.getInt("patient_id")));
             }
@@ -77,13 +79,14 @@ public class ProceduresRepository {
     	int responseCheck = 0;
     	
     	try {    	
-        	PreparedStatement statement = this.database.prepareStatement("INSERT INTO Procedures "
-        			+ "(Title, Procedure_Description, Assigner_ID, Patient_ID) VALUES "
-    				+ "(?, ?, ?, ?)");
+        	PreparedStatement statement = this.database.prepareStatement("INSERT INTO PROCEDURES "
+        			+ "(Title, Procedure_Description, Link, Assigner_ID, Patient_ID) VALUES "
+    				+ "(?, ?, ?, ?, ?)");
     		statement.setString(1, newProcedure.getTitle());
     		statement.setString(2, newProcedure.getDescription());
-    		statement.setInt(3, newProcedure.getAssignerId());
-    		statement.setInt(4, newProcedure.getPatientId());
+    		statement.setString(3, newProcedure.getLink());
+    		statement.setInt(4, newProcedure.getAssignerId());
+    		statement.setInt(5, newProcedure.getPatientId());
 
     		responseCheck = statement.executeUpdate();
     		statement.close();

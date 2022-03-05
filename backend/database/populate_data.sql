@@ -34,9 +34,13 @@ VALUES
 ('19', '2022-03-04 10:00:00', 'start of convo2', '0', '1', '3'),
 ('20', '2022-03-04 10:00:00', 'end of convo2', '0', '1', '3');
 
-INSERT INTO Procedures (Title, Procedure_Description, Assigner_ID, Patient_ID) 
+INSERT INTO Procedures (Title, Procedure_Description, Link, Assigner_ID, Patient_ID) 
 VALUES
-('Transsphenoidal Resection', 'Removal of the tumor is performed through the nasal passage.', 2, 3);
+('Transsphenoidal Approach', 'This type of surgery is performed through the nasal passage, most commonly used to resect pituitary tumors. 
+Sometimes pieces of skin or tissue is removed from your leg or abdomen to be used as a graft. 
+The graft closes off an area in your brain and prevents the leakage of cerebral spinal fluid (CSF) from the surgical site. 
+You may have rubber stents placed in your nose for up to 1-2 weeks after the surgery. 
+These stents will be removed at the ENT clinic', '', 2, 3);
 
 INSERT INTO Monitoring (Assigner_ID, Patient_ID, Post_Datetime, Post_Title, Post_Description, Photo_ID)
 VALUES

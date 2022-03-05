@@ -37,6 +37,7 @@ public class RecoveriesRepository {
             	recoveries.add(new Recoveries(
                         results.getString("title"),
                         results.getString("recovery_description"),
+                        results.getString("link"),
                         results.getInt("assigner_id"),
                         results.getInt("patient_id")));
             }
@@ -63,6 +64,7 @@ public class RecoveriesRepository {
             	requestedRecovery.add(new Recoveries(
                         results.getString("title"),
                         results.getString("recovery_description"),
+                        results.getString("link"),
                         results.getInt("assigner_id"),
                         results.getInt("patient_id")));
             }
@@ -78,12 +80,13 @@ public class RecoveriesRepository {
     	
     	try {    	
         	PreparedStatement statement = this.database.prepareStatement("INSERT INTO RECOVERIES "
-        			+ "(Title, Recovery_Description, Assigner_ID, Patient_ID) VALUES "
-    				+ "(?, ?, ?, ?)");
+        			+ "(Title, Recovery_Description, Link, Assigner_ID, Patient_ID) VALUES "
+    				+ "(?, ?, ?, ?, ?)");
     		statement.setString(1, newRecovery.getTitle());
     		statement.setString(2, newRecovery.getDescription());
-    		statement.setInt(3, newRecovery.getAssignerId());
-    		statement.setInt(4, newRecovery.getPatientId());
+    		statement.setString(3, newRecovery.getLink());
+    		statement.setInt(4, newRecovery.getAssignerId());
+    		statement.setInt(5, newRecovery.getPatientId());
 
     		responseCheck = statement.executeUpdate();
     		statement.close();

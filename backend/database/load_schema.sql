@@ -22,7 +22,8 @@ DROP TABLE IF EXISTS PROCEDURES;
 CREATE TABLE PROCEDURES ( 
 	Procedure_ID				int not null auto_increment,
     Title						varchar(100) not null,
-    Procedure_Description		varchar(500) not null,
+    Procedure_Description		varchar(5000) not null,
+    Link						varchar(500),
     Assigner_ID					int not null,
     Patient_ID					int not null,
 
@@ -31,35 +32,18 @@ CREATE TABLE PROCEDURES (
     foreign key (Patient_ID) references USERS(User_ID) 
 );
 
-DROP TABLE IF EXISTS PROCEDURE_VIDEO; 
-CREATE TABLE PROCEDURE_VIDEO ( 
-	Procedure_ID	int not null,
-    Link			varchar(50) not null,
-
-    primary key (Procedure_ID, Link),
-	foreign key (Procedure_ID) references PROCEDURES(Procedure_ID)
-);
-
 DROP TABLE IF EXISTS RECOVERY; 
 CREATE TABLE RECOVERY ( 
 	Recovery_ID		int not null auto_increment,
     Title						varchar(100) not null,
-    Recovery_Description		varchar(500) not null,
+    Recovery_Description		varchar(5000) not null,
+    Link						varchar(500),
     Assigner_ID					int not null,
     Patient_ID					int not null,
 
     primary key (Recovery_ID),
 	foreign key (Assigner_ID) references USERS(User_ID),
     foreign key (Patient_ID) references USERS(User_ID) 
-);
-
-DROP TABLE IF EXISTS RECOVERY_VIDEO; 
-CREATE TABLE RECOVERY_VIDEO ( 
-	Recovery_ID		int not null,
-    Link			varchar(50) not null,
-
-    primary key (Recovery_ID, Link),
-	foreign key (Recovery_ID) references RECOVERY(Recovery_ID)
 );
 
 DROP TABLE IF EXISTS PHOTOS; 
