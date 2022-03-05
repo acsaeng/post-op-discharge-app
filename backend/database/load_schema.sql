@@ -75,7 +75,7 @@ CREATE TABLE PHOTOS (
 
 DROP TABLE IF EXISTS MONITORING; 
 CREATE TABLE MONITORING ( 
-	Monitoring_ID		int not null,
+	Monitoring_ID		int not null auto_increment,
     Assigner_ID			int not null,
     Patient_ID			int not null,
     Post_Datetime		datetime not null,

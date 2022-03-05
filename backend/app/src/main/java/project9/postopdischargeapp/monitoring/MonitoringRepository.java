@@ -1,6 +1,8 @@
 package project9.postopdischargeapp.monitoring;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 import project9.postopdischargeapp.database.DatabaseConnection;
 
 import java.sql.Connection;
@@ -69,6 +71,7 @@ public class MonitoringRepository {
         return monitoringEntries;
     }
 
+    @NotNull
     private void addMonitoringEntryToList(List<MonitoringEntry> monitoringEntries) throws SQLException {
         monitoringEntries.add(new MonitoringEntry(results.getInt("monitoring_id"),
                 results.getInt("assigner_id"),
@@ -77,5 +80,30 @@ public class MonitoringRepository {
                 results.getString("post_title"),
                 results.getString("post_description"),
                 results.getBlob("Photo")));
+    }
+
+    public int addMonitoringEntry(@RequestBody MonitoringEntry monitoringEntry){
+        int responseCheck = 0;
+
+        try {
+            query = "INSERT INTO Monitoring (Assigner_ID, Patient_ID, Post_Datetime, Post_Title, Post_Description, Photo_ID)\n" +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = this.database.prepareStatement(query);
+            statement.setInt(1, monitoringEntry.get_assignerId());
+            statement.setInt(2, monitoringEntry.get_patientId());
+            statement.setDate(3, monitoringEntry.get_entryDateTime());
+            statement.setString(4, monitoringEntry.get_postTitle());
+            statement.setString(5, monitoringEntry.get_postDescription());
+            statement.setBlob(6, monitoringEntry.get_imageData());
+
+            responseCheck = statement.executeUpdate();
+            statement.close();
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return responseCheck;
+
     }
 }

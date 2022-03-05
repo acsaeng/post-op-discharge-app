@@ -32,4 +32,10 @@ public class MonitoringController {
     public Map<Integer, List<MonitoringEntry>> getMonitoringEntriesByAssignerId(@PathVariable("userId") int userId) {
         return _monitoringService.getMonitoringEntriesByAssignerId(userId);
     }
+
+    @PostMapping(path = "/")
+    public int addMonitoringEntry(@RequestBody MonitoringEntry monitoringEntry){
+        System.out.println("inside the endpoint");
+        return _monitoringService.addMonitoringEntry(monitoringEntry);
+    }
 }
