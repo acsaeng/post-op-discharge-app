@@ -49,13 +49,27 @@ function Login() {
                     // console.log('decoded')
                     // console.log(decoded)
     
-                    userId = Number(decoded.userId);
-                    patientId = Number(decoded.patientId);
+                    // userId = Number(decoded.userId);
+                    // patientId = Number(decoded.patientId);
+                    userId = decoded.userId;
+                    patientId = decoded.patientId;
                     userType = decoded.userType;
 
                     let arrUserInfo = [userId, patientId, userType];
-                    dispatch({ type: "LOGGED IN", userInfo: arrUserInfo });
-                    navigate("/dashboard")
+                    // dispatch({ type: "LOGGED IN", userInfo: arrUserInfo });
+                    console.log(arrUserInfo)
+
+                    window.localStorage.setItem('userId', userId)
+                    window.localStorage.setItem('patientId', patientId)
+                    window.localStorage.setItem('userType', userType)
+
+                    if (userType === "Patient"){
+                        navigate("/dashboard")
+                    }else{
+                        // var currUserId = window.localStorage.getItem("userId");
+                        // console.log('before patient-list, currUserId = '+currUserId)
+                        navigate("/patient-list")
+                    }
                 }
                 else{
                     console.log('failed to login')

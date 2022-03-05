@@ -29,9 +29,15 @@ function Messages() {
   // this.state.patientId = useSelector(state => state.patientId);
   // this.state.userType = useSelector(state => state.userType);
 
-  const [senderId, setSenderId] = useState(useSelector(state => state[0])); 
-  const [patientId, setPatientId] = useState( useSelector(state => state[1])); 
-  const [userType, setUserType] = useState( useSelector(state => state[2])); 
+  // const [senderId, setSenderId] = useState(useSelector(state => state[0])); 
+  // const [patientId, setPatientId] = useState( useSelector(state => state[1])); 
+  // const [userType, setUserType] = useState( useSelector(state => state[2])); 
+
+  const [senderId, setSenderId] = useState(window.localStorage.getItem("senderId")); 
+  const [userType, setUserType] = useState( window.localStorage.getItem("userType")); 
+  const [patientId, setPatientId] = useState( window.localStorage.getItem("patientId")); 
+
+
 
   //update the state on change
   function getData(val) {

@@ -8,38 +8,12 @@ import { CgPill } from 'react-icons/cg'
 import './Dashboard.css';
 import Navbar from '../navbar/Navbar';
 
-import { useState } from 'react'
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-
-
-// const Dashboard = () => {
-function Dashboard() {    
+const Dashboard = () => {
     const navigate = useNavigate();
 
     const urlParams = new URLSearchParams(useLocation().search)
-    var selectedPatientId = urlParams.get("patientId")
-    console.log(selectedPatientId)
-    if (selectedPatientId){
-        window.localStorage.setItem('patientId', selectedPatientId)
-    }
-
-    // senderId = window.localStorage.getItem("senderId");
-    // userType = window.localStorage.getItem("userType");
-    const [senderId, setSenderId] = useState(window.localStorage.getItem("senderId")); 
-    const [userType, setUserType] = useState( window.localStorage.getItem("userType")); 
-
-    // const [senderId, setSenderId] = useState(useSelector(state => state[0])); 
-    // // const [patientId, setPatientId] = useState( useSelector(state => state[1])); 
-    // const [userType, setUserType] = useState( useSelector(state => state[2])); 
-    // console.log("currently in Dashboard")
-    // console.log("senderId = " + senderId)
-    // console.log("patientId = " + patientId)
-    // console.log("userType = " + userType)
-
-    let arrUserInfo = [senderId, selectedPatientId, userType];
-    const dispatch = useDispatch();
-    dispatch({ type: "LOGGED IN", userInfo: arrUserInfo });
+    var userId = urlParams.get("patientId")
+    console.log(userId)
 
     return (
         <div className='h-100'>
