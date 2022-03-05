@@ -20,7 +20,9 @@ function Dashboard() {
     const urlParams = new URLSearchParams(useLocation().search)
     var selectedPatientId = urlParams.get("patientId")
     console.log(selectedPatientId)
-    window.localStorage.setItem('patientId', selectedPatientId)
+    if (selectedPatientId){
+        window.localStorage.setItem('patientId', selectedPatientId)
+    }
 
     // senderId = window.localStorage.getItem("senderId");
     // userType = window.localStorage.getItem("userType");
