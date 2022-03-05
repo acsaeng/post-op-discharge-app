@@ -33,7 +33,7 @@ CREATE TABLE PROCEDURES (
 
 DROP TABLE IF EXISTS PROCEDURE_VIDEO; 
 CREATE TABLE PROCEDURE_VIDEO ( 
-	Procedure_ID	int not null auto_increment,
+	Procedure_ID	int not null,
     Link			varchar(50) not null,
 
     primary key (Procedure_ID, Link),
@@ -51,6 +51,15 @@ CREATE TABLE RECOVERY (
     primary key (Recovery_ID),
 	foreign key (Assigner_ID) references USERS(User_ID),
     foreign key (Patient_ID) references USERS(User_ID) 
+);
+
+DROP TABLE IF EXISTS RECOVERY_VIDEO; 
+CREATE TABLE RECOVERY_VIDEO ( 
+	Recovery_ID		int not null,
+    Link			varchar(50) not null,
+
+    primary key (Recovery_ID, Link),
+	foreign key (Recovery_ID) references RECOVERY(Recovery_ID)
 );
 
 DROP TABLE IF EXISTS MONITORING; 

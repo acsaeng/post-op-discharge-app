@@ -18,9 +18,13 @@ public class ProceduresService {
         return this.repo.getProceduresById(userId);
     }
     
+    public ArrayList<Procedures> getProceduresByProcedureId(int procedureId) {
+    	return this.repo.getProceduresByProcedureId(procedureId);
+	}
 
 	public int addProcedure(Procedures newProcedure) {
 		return this.repo.addProcedure(newProcedure);
 		
 	}
+	
 }
