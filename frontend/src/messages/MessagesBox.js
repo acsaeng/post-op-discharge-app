@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { Component } from "react"
+// import {  Image } from 'react-native';
+// import {Buffer} from 'buffer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Messages.css';
+import { resolvePath } from 'react-router-dom';
 
 
 export default class MessagesBox extends Component {
@@ -14,6 +17,7 @@ export default class MessagesBox extends Component {
         //array holding all the messages for this user
         messages: [],
         arrPhotos: [],
+        base64Images: [],
         imgUrls: []
     }
 
@@ -25,27 +29,82 @@ export default class MessagesBox extends Component {
         console.log('Mounted component, loaded the messages the 1st time')
 
         this.getAnyPhotos()
-        // setInterval(this.getAllMessages, 1000)
+        setInterval(this.getAllMessages, 1000)
 
     }
 
     getAnyPhotos = () => {
-        let photoId = 1; // this needs to be replaced. search through messages array and see if any message has photoId
+        let photoId = 4; // this needs to be replaced. search through messages array and see if any message has photoId
 
 
         axios.get('http://localhost:8081/photos/' + photoId).then(
             res => {
-                console.log(res)
-                // console.log(res.data.photo)
+                // console.log(res)
+                console.log(res.data.photo)
                 this.state.arrPhotos.push(res.data.photo)
+
+                //trying to create Object URL
                 var binaryData = [];
                 binaryData.push(res.data.photo);
-                this.state.imgUrls.push(URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})))
-             }
+                
+                // this.state.imgUrls.push(URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})))
+                
+                // const fileReader = new FileReader();
+                const currBlob = new Blob(binaryData);
+                // console.log(currBlob)
+                console.log('reader')
+                const oneImage = this.convertBase64(currBlob) 
+                // fileReader.readAsDataURL(currBlob);
+
+                // fileReader.onload = () => {
+                //     resolve(fileReader.result)
+                // }
+
+                // console.log(.result)
+
+                // this.state.imgUrls.push(oneImage)
+
+
+                // var base64Image = 'data:image/png;base64,REPLACETHIS'.replace('REPLACETHIS',res.data.photo)
+                
+                // var base64Image = 'data:image/png;base64,'+ new String(Base64.getEncoder().encode(res.data.photo)) 
+                
+                // const Buffer = require("buffer").Buffer;
+                // let encodedAuth = Buffer(res.data.photo).toString("base64")
+                
+            //     const Buffer = require("buffer").Buffer;
+            //     let encodedAuth = Buffer.from(res.data.photo, 'utf-8').toString('base64')
+            //     var base64Image = 'data:image/png;base64,'+ encodedAuth
+            //     this.state.base64Images.push(base64Image)
+            }
             
         )
 
     }
+
+
+    convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+      
+            fileReader.onload = () => {
+                console.log('inside filereader onload')
+                console.log(fileReader.result)
+                console.log(this.state.imgUrls)
+                this.state.imgUrls.push(fileReader.result)
+                console.log(this.state.imgUrls)
+
+
+              resolve(fileReader.result);
+            };
+      
+            fileReader.onerror = (error) => {
+              reject(error);
+            };
+          });
+        };
+
 
     getAllMessages = () => {
         // console.log('get all messages')
@@ -101,8 +160,9 @@ export default class MessagesBox extends Component {
                     )}
                 </div>
                 <div>
-                    <img src={this.state.imgUrls[0]}>
-                    </img>
+                    <img src={this.state.imgUrls[0]} height="50px"/>
+                    {/* <Image style={{width:50, height:50}} source={{uri: this.state.base64Images[0]}} /> */}
+                        {/* <img src="data:image/"/> */}
                 </div>
                 <div ref={(el) => { this.messagesEnd = el; }}></div>
             </div>
