@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Login from './login/Login';
 import Dashboard from './dashboard/Dashboard';
 import UserInfo from './user-info/UserInfo';
+import PatientList from './patient-search/PatientList';
 import Education from './education/Education';
 import Medications from './medications/Medications';
 import Messages from './messages/Messages';
@@ -19,6 +20,7 @@ function App() {
                 <Route path='/' element={<Login/>}/>
                 <Route path='/dashboard' element={<Dashboard/>}/>
                 <Route path='/user-info' element={<UserInfo/>}/>
+                <Route path='/patient-list' element={<PatientList/>}/>
                 <Route path='/education' element={<Education/>}/>
                 <Route path='/education/monitoring' element = {<Monitoring/>}/>
                 <Route path='/education/procedure' element = {<Procedure/>}/>
