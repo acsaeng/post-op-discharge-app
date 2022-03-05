@@ -31,20 +31,6 @@ CREATE TABLE PROCEDURES (
     foreign key (Patient_ID) references USERS(User_ID) 
 );
 
-DROP TABLE IF EXISTS PROCEDURES; 
-CREATE TABLE PROCEDURES ( 
-	Procedure_ID				int not null,
-    Title						varchar(50) not null,
-    Procedure_Description		varchar(50) not null,
-    Assigner_ID					int not null,
-    Patient_ID					int not null,
-
-    primary key (Procedure_ID),
-	foreign key (Assigner_ID) references USERS(User_ID),
-    foreign key (Patient_ID) references USERS(User_ID) 
-);
-
-
 DROP TABLE IF EXISTS PROCEDURE_VIDEO; 
 CREATE TABLE PROCEDURE_VIDEO ( 
 	Procedure_ID	int not null,
