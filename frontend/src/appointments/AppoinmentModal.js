@@ -1,5 +1,5 @@
 import React from 'react'
-import {Modal , Button} from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 function AppoinmentModal(props) {
   return (
@@ -15,12 +15,12 @@ function AppoinmentModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h5>Date: {props.data.date}</h5>
-        <h5>Time: {props.data.time}</h5>
+        <h5>Date & Time: {props.data.date}</h5>
         <h5>Location: {props.data.location}</h5>
+        <h5>Phone Number: {props.data.phone_num}</h5>
         <h5>Comments: </h5>
         <p>
-          {props.data.comment}
+          {props.data.comments}
         </p>
       </Modal.Body>
       <Modal.Footer>

@@ -11,14 +11,14 @@ function AppointmentCard(props) {
         <Card.Header>{props.date}</Card.Header>
         <Card.Body>
           <Card.Title>Appointment: {props.title}</Card.Title>
-          <Card.Text>Time: {props.time}</Card.Text>
+          <Card.Text>Location: {props.location}</Card.Text>
           <Button variant="primary" onClick={() => setModalShow(true)}>
             Details
           </Button>
         </Card.Body>
       </Card>
 
-      <AppoinmentModal show={modalShow} onHide={() => setModalShow(false)} data={{...props}} />
+      <AppoinmentModal show={modalShow} onHide={() => setModalShow(false)} data={{ ...props }} />
     </>
   );
 }
