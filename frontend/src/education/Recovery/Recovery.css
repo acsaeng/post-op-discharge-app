@@ -1,0 +1,11 @@
+button:hover {
+    background-color: #daecff !important;
+    color: #162a53 !important;
+}
+
+.menu-option-btn {
+    color: white !important;
+    background-color: #162a53 !important;
+    font-weight: bold;
+    width: 60vw !important;
+}

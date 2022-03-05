@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "/education/recoveries")
+@RequestMapping(path = "/patientId={patientId}/education/recoveries")
 public class RecoveriesController {
 
     private final RecoveriesService service;
@@ -23,7 +23,7 @@ public class RecoveriesController {
      * @param patientId
      * @return
      */
-    @GetMapping(path = "/patientId={patientId}")
+    @GetMapping(path = "/")
     @ResponseBody
     public ArrayList<Recoveries> getRecoveriesById(@PathVariable("patientId") int patientId) {
         return this.service.getRecoveriesById(patientId);

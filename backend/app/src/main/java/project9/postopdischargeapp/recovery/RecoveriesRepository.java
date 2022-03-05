@@ -26,7 +26,7 @@ public class RecoveriesRepository {
 
         try {
             // Execute SQL query to retrieve recoveries belonging to one specified user
-            PreparedStatement statement = this.database.prepareStatement("SELECT * FROM RECOVERIES "
+            PreparedStatement statement = this.database.prepareStatement("SELECT * FROM RECOVERY "
             		+ "WHERE Patient_ID = ?");
 
             statement.setInt(1, patientId);
@@ -53,7 +53,7 @@ public class RecoveriesRepository {
 
         try {
             // Execute SQL query to retrieve recoveries belonging to one specified user
-            PreparedStatement statement = this.database.prepareStatement("SELECT * FROM RECOVERIES "
+            PreparedStatement statement = this.database.prepareStatement("SELECT * FROM RECOVERY "
             		+ "WHERE Recovery_ID = ?");
 
             statement.setInt(1, recoveryId);
@@ -79,7 +79,7 @@ public class RecoveriesRepository {
     	int responseCheck = 0;
     	
     	try {    	
-        	PreparedStatement statement = this.database.prepareStatement("INSERT INTO RECOVERIES "
+        	PreparedStatement statement = this.database.prepareStatement("INSERT INTO RECOVERY "
         			+ "(Title, Recovery_Description, Link, Assigner_ID, Patient_ID) VALUES "
     				+ "(?, ?, ?, ?, ?)");
     		statement.setString(1, newRecovery.getTitle());
