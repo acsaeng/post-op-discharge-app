@@ -41,49 +41,28 @@ function Login() {
             }
         }).then(
             res => {
-                decoded = jwt_decode(res.data);
-                console.log('decoded')
-                console.log(decoded)
+                console.log("res.data")
+                console.log(res.data)
 
-                userId = Number(decoded.userId);
-                patientId = Number(decoded.patientId);
-                userType = decoded.userType;
+                if (res.data){
+                    decoded = jwt_decode(res.data);
+                    // console.log('decoded')
+                    // console.log(decoded)
+    
+                    userId = Number(decoded.userId);
+                    patientId = Number(decoded.patientId);
+                    userType = decoded.userType;
 
-                // setUserId(decoded.userId);
-                // setPatientId(decoded.patientId);
-                // setUserType(decoded.userType);
-
-                let arrUserInfo = [userId, patientId, userType];
-                dispatch({ type: "LOGGED IN", userInfo: arrUserInfo });
-
+                    let arrUserInfo = [userId, patientId, userType];
+                    dispatch({ type: "LOGGED IN", userInfo: arrUserInfo });
+                    navigate("/dashboard")
+                }
+                else{
+                    console.log('failed to login')
+                }
             }
         )
 
-
-        
-
-
-        // let arrUserInfo = [userId, patientId, userType];
-        // dispatch({ type: "LOGGED IN", userInfo: arrUserInfo });
-
-
-        navigate("/dashboard")
-        // //Reducer for saving the global state
-        // const storeUserId = (state=userId) =>{ return state}
-        // const storePatientId = (state=patientId) =>{return state}
-        // const storeUserType = (state=userType) =>{return state}
-
-        // const allReducers = combineReducers({
-        //     userId: storeUserId,
-        //     patientId:storePatientId,
-        //     userType:storeUserType
-        // })
-
-        // let store = createStore(allReducers,  
-        //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-
-        // return;
     }
 
 
