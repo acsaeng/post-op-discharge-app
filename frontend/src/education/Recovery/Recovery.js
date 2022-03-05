@@ -3,13 +3,14 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../../navbar/Navbar';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Recovery = () => {
   const navigate = useNavigate();
 
-  const [assignerId, setAssignerId] = useState(8); //This needs to be updated to be dynamic!!!
-  const [patientId, setPatientId] = useState(3); //This needs to be updated to be dynamic!!!
-  // const patientId = urlParams.get("patientId")
+  const assignerId = window.localStorage.getItem("userId"); 
+  const patientId = window.localStorage.getItem("patientId"); 
+  const userType = window.localStorage.getItem("userType"); 
 
   const [isLoading, setIsLoading] = useState(true);
   const [recoveries, setRecoveries] = useState({});
@@ -47,7 +48,6 @@ const Recovery = () => {
       <Navbar />
       <div className="d-flex align-items-center flex-column" style={{marginTop: "5vh"}}>
         <h4>My Recovery</h4>
-          <button className="menu-option-btn m-1 py-4 btn fw-bold" onClick={() => navigate("/education/recovery/add")}>Add Recovery</button>
           <div className="card p-3">
               <div className="card-body">
                   <h5 className="card-title">{recoveries.title}</h5>
@@ -57,6 +57,7 @@ const Recovery = () => {
                   </div>
               </div>
           </div>
+        <button className="menu-option-btn m-3 py-4 btn fw-bold" onClick={() => navigate("/education/recovery/add")}>Add Recovery</button>
       </div>
     </div>
   )

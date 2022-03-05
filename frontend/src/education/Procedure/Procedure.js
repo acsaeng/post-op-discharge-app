@@ -3,18 +3,17 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../../navbar/Navbar';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Procedure = () => {
   const navigate = useNavigate();
 
-  const [assignerId, setAssignerId] = useState(8); //This needs to be updated to be dynamic!!!
-  const [patientId, setPatientId] = useState(3); //This needs to be updated to be dynamic!!!
-  // const patientId = urlParams.get("patientId")
+  const assignerId = window.localStorage.getItem("userId"); 
+  const patientId = window.localStorage.getItem("patientId"); 
+  const userType = window.localStorage.getItem("userType"); 
 
   const [isLoading, setIsLoading] = useState(true);
   const [procedures, setProcedures] = useState({});
-
-  const [userInfo, setUserInfo] = useState({});
 
   function loadProcedures() {
     if(isLoading) {
@@ -35,6 +34,9 @@ const Procedure = () => {
   }
 
   loadProcedures();
+  console.log(assignerId)
+  console.log(patientId)
+  console.log(userType)
 
   //when the submit button is clicked, get the information and create new procedure on database
   function clickButton(event) {
@@ -47,7 +49,6 @@ const Procedure = () => {
       <Navbar />
       <div className="d-flex align-items-center flex-column" style={{marginTop: "5vh"}}>
         <h4>My Procedure</h4>
-          <button className="menu-option-btn m-1 py-4 btn fw-bold" onClick={() => navigate("/education/procedure/add")}>Add Procedure</button>
           <div className="card p-3">
               <div className="card-body">
                   <h5 className="card-title">{procedures.title}</h5>
@@ -57,6 +58,7 @@ const Procedure = () => {
                   </div>
               </div>
           </div>
+          <button className="menu-option-btn m-3 py-4 btn fw-bold" onClick={() => navigate("/education/procedure/add")}>Add a Procedure</button>
       </div>
     </div>
   )

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Recovery.css';
 import Navbar from '../../navbar/Navbar';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const AddRecovery = () => {
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ const AddRecovery = () => {
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
 
-  const [assignerId, setAssignerId] = useState(8); //This needs to be updated to be dynamic!!!
-  const [patientId, setPatientId] = useState(3); //This needs to be updated to be dynamic!!!
-  // const patientId = urlParams.get("patientId")
+  const assignerId = window.localStorage.getItem("userId"); 
+  const patientId = window.localStorage.getItem("patientId"); 
+  const userType = window.localStorage.getItem("userType"); 
 
   //update the state on change
   function getTitle(val) {

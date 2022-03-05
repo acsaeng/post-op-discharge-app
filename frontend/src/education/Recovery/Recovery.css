@@ -9,3 +9,7 @@ button:hover {
     font-weight: bold;
     width: 60vw !important;
 }
+
+.Patient {
+    display: none;
+}
