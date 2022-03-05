@@ -10,7 +10,7 @@ function AppoinmentModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title >
           {props.data.title}
         </Modal.Title>
       </Modal.Header>

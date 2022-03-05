@@ -59,9 +59,19 @@ function AppointmentStaticModal(props) {
     addAppointment(appointmentData);
   }
 
+  function renderAddAppointmentButton(props) {
+    if (props.role !== 'patient') {
+      return <nav className="navbar fixed-bottom navbar-light bg-light justify-content-center"><button onClick={() => {
+        handleShow()
+        props.reload(false)
+      }}>Add Appointment</button></nav>
+      //return <button onClick={() => setModal(true)}>Add Appointment</button>;
+    }
+  }
+
   return (
     <>
-      <button onClick={() => handleShow()}>Add Appointment</button>
+      {renderAddAppointmentButton(props)}
       <Modal
         show={show}
         onHide={handleClose}
@@ -73,7 +83,7 @@ function AppointmentStaticModal(props) {
           <Modal.Title>Add Appointment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>
+          <div className="mb-2 mt-2 d-flex justify-content-center">
             <form onSubmit={submitHandler}>
               <div className="form-group">
                 <label htmlFor="title">Title</label>
@@ -157,7 +167,7 @@ function AppointmentStaticModal(props) {
                 <textarea
                   id="description"
                   require="true"
-                  rows="5"
+                  rows="3"
                   ref={commentsInputRef}
                 ></textarea>
               </div>

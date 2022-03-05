@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import AppointmentList from "./AppointmentList";
 import AppointmentStaticModal from "./AppointmentStaticModal";
+import Navbar from "../navbar/Navbar";
 
 const Appointments = (props) => {
   /* loading state is used to handle the case that the data is still being fetched from database */
@@ -14,8 +15,11 @@ const Appointments = (props) => {
   function fetchAppointments() {
     setIsLoading(true);
 
+    let url = "http://localhost:8080/appointment/" + props.role + "_" + props.userID;
+
+    console.log(url);
     fetch(
-      "http://localhost:8080/appointment/patient_6"
+      url
     )
       .then((response) => {
         return response.json();
@@ -52,16 +56,11 @@ const Appointments = (props) => {
   }
 
 
-  function renderAddAppointmentButton() {
-    if (props.role !== 'patient') {
-      return <button onClick={() => setModal(true)}>Add Appointment</button>;
-    }
-  }
-
   return (
     <section>
+      <Navbar />
       <AppointmentList appointments={loadedAppointments} />
-      <AppointmentStaticModal display={displayModal} setDisplay={setModal} />
+      <AppointmentStaticModal reload={setIsLoading} role={props.role} />
     </section>
   );
 };
