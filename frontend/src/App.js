@@ -10,7 +10,9 @@ import Messages from './messages/Messages';
 import Appointments from './appointments/Appointments';
 import Monitoring from './education/Monitoring';
 import Procedure from './education/Procedure/Procedure';
-import Recovery from './education/Recovery';
+import Recovery from './education/Recovery/Recovery';
+import AddProcedure from './education/Procedure/AddProcedure'
+import AddRecovery from './education/Recovery/AddRecovery'
 
 function App() {
   return (
@@ -24,7 +26,9 @@ function App() {
                 <Route path='/education' element={<Education/>}/>
                 <Route path='/education/monitoring' element = {<Monitoring/>}/>
                 <Route path='/education/procedure' element = {<Procedure/>}/>
+                <Route path='/education/procedure/add' element = {<AddProcedure/>}/>
                 <Route path='/education/recovery' element = {<Recovery/>}/>
+                <Route path='/education/recovery/add' element = {<AddRecovery/>}/>
                 <Route path='/medications' element={<Medications/>}/>
                 <Route path='/messages' element={<Messages/>}/>
                 <Route path='/appointments' element={<Appointments/>}/>
