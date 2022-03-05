@@ -30,4 +30,12 @@ public class UserController {
         return this.service.getTeamPatients(team);
 
     }
+    
+    @GetMapping(path = "authenticate/")
+    @ResponseBody
+    public String authenticateUser(@RequestParam String userName, @RequestParam String password) throws Exception{
+    	
+    	String token =  this.service.authenticateUser(userName, password);
+    	return token;
+    }
 }

@@ -36,8 +36,8 @@ public class PhotosController {
     
 
 	@PostMapping(path = "/")
-	public int addMessage(@RequestParam("file") MultipartFile multipartFile, @RequestParam("clientId") int clientId) {
-		System.out.println("inside the endpoint");
+	public int addPhoto(@RequestParam("file") MultipartFile multipartFile, @RequestParam("clientId") int clientId) {
+//		System.out.println("inside the endpoint");
 		return this.service.addPhoto(multipartFile, clientId);
 	}
 }

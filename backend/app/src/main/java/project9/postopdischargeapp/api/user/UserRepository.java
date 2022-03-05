@@ -1,6 +1,7 @@
 package project9.postopdischargeapp.api.user;
 
 import org.springframework.stereotype.Repository;
+
 import project9.postopdischargeapp.database.DatabaseConnection;
 
 import java.sql.Connection;
@@ -85,4 +86,48 @@ public class UserRepository {
 
         return patients;
     }
+    
+    /**
+     * Verifies a user's email and password information
+     * @param username user's username
+     * @param password user's password
+     * @return 1 if login was successful, 0 otherwise
+     */
+	public User loginUser(String username, String password) {
+		//empty dummy user to return if user is not found in database
+		User singleUser = null;
+		
+		try {
+			// Create and execute a query to verify username and password
+			PreparedStatement statement = this.database.prepareStatement("SELECT * FROM USERS WHERE Email = ? AND User_Password = ?");
+			statement.setString(1, username);
+			statement.setString(2, password);
+			System.out.println(statement.toString());
+
+			ResultSet results = statement.executeQuery();
+			
+			while (results.next()) {
+				
+			singleUser = new User(results.getInt("User_ID"),
+                    results.getString("Position"),
+                    results.getString("Team"),
+                    results.getString("First_Name"),
+                    results.getString("Last_Name"),
+                    results.getString("Sex").charAt(0),
+                    LocalDate.parse(results.getString("DoB")),
+                    results.getString("Phone_Num"),
+                    results.getString("Email"),
+                    results.getString("User_Password"));
+			}
+			statement.close();
+			return singleUser;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		//returns empty user
+		return singleUser;
+    }
+
 }
