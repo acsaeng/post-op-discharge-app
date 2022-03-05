@@ -15,7 +15,7 @@ const Appointments = (props) => {
     setIsLoading(true);
 
     fetch(
-      "https://ensf609-hackthon-dummyatabase-default-rtdb.firebaseio.com/appointments.json"
+      "http://localhost:8080/appointment/patient_6"
     )
       .then((response) => {
         return response.json();
@@ -23,10 +23,12 @@ const Appointments = (props) => {
       .then((data) => {
         const appointments = [];
         for (const key in data) {
+
           const appointment = {
             id: key,
             ...data[key],
           };
+          console.log(appointment)
           appointments.push(appointment);
         }
 
@@ -35,17 +37,6 @@ const Appointments = (props) => {
       });
   }
 
-  function addAppointmentHandler(appointmentData) {
-    /* Firebase: whatever comes after the domain -> .com/ , e.g. meetups, will be translated to folder or table.
-    Firebase expect .json at the end. */
-    fetch("http://localhost:8080/appointment/", {
-      method: "POST",
-      body: JSON.stringify(appointmentData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
 
   /* load data once only */
   useEffect(() => {
@@ -62,16 +53,15 @@ const Appointments = (props) => {
 
 
   function renderAddAppointmentButton() {
-    if(props.role!=='patient')
-    {
-      return <button onClick={()=>setModal(true)}>Add Appointment</button>;
+    if (props.role !== 'patient') {
+      return <button onClick={() => setModal(true)}>Add Appointment</button>;
     }
   }
 
   return (
     <section>
       <AppointmentList appointments={loadedAppointments} />
-      <AppointmentStaticModal display={displayModal} setDisplay={setModal}/>
+      <AppointmentStaticModal display={displayModal} setDisplay={setModal} />
     </section>
   );
 };
