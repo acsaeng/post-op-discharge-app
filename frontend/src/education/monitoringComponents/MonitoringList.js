@@ -3,12 +3,12 @@ import MonitoringCard from "./MonitoringCard";
 function MonitoringList(props) {
   return (
     <ul>
-      {props.patientData.map((patientData) => (
+      {props.entires.map((patientData) => (
         <div key={patientData.id}>
           <MonitoringCard
             key={patientData.id}
             id={patientData.id}
-            tite={patientData._postTitle}
+            title={patientData._postTitle}
             date={patientData._entryDateTime}
             image={patientData._imageData}
             comment={patientData._postDescription}

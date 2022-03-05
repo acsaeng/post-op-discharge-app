@@ -5,12 +5,11 @@ const MonitoringCard = props => {
   return (
     <>
       <Card style={{ width: "18rem" }}>
-        <Card.Header>{props.date}</Card.Header>
+        <Card.Header>{props.title}</Card.Header>
         <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>Entry Date: {props.time}</Card.Text>
+          <Card.Title>{props.date}</Card.Title>
           <Card.Img>{props.image}</Card.Img>
-          <Card.Text>Description: {props.description}</Card.Text>
+          <Card.Text>Comment: {props.comment}</Card.Text>
         </Card.Body>
       </Card>
     </>

@@ -7,26 +7,29 @@ const Monitoring = () => {
     const [userView, setUserView] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const[patientData, setPatientData] = useState([]);
-
     const patientId = 6;//update this later
-        useEffect(()=>{
-            fetch('http://localhost:8081/education/monitoring/patient/'+patientId)
-            .then(response =>{
-                return response.json()
-            }).then((data)=>{
-                const entries = [];
-                for (const key in data){
-                    const entry ={
-                        id: key,
-                        ...data[key],
-                    };
-                    console.log(entry);
-                   entries.push(entry); 
-                }
-                setPatientData(entries);
-                console.log(entries)
-            }).catch(err => console.log(err));
-        },[])
+
+    let url = 'http://localhost:8081/education/monitoring/patient/'+ patientId;
+    useEffect(()=>{
+        console.log('using effect')
+        fetch(url)
+        .then(response =>{
+            return response.json()
+        }).then((data)=>{
+            const entries = [];
+            for (const key in data){
+                console.log(key);
+                const entry ={
+                    id: key,
+                    ...data[key],
+                };
+                console.log(entry);
+                entries.push(entry); 
+            }
+            setPatientData(entries);
+            console.log(entries)
+        }).catch(err => console.log(err));
+    },[])
 
     function LoadAssignerMonitoringData(){
         const assignerId = 2;//update this later
