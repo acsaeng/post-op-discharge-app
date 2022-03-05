@@ -22,4 +22,8 @@ public class MonitoringService {
     public Map<Integer, List<MonitoringEntry>> getMonitoringEntriesByAssignerId(int assignerId) {
         return this.repo.getMonitoringEntriesByAssignerId(assignerId);
     }
+
+    public int addMonitoringEntry(MonitoringEntry monitoringEntry){
+        return this.repo.addMonitoringEntry(monitoringEntry);
+    }
 }

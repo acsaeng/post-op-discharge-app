@@ -38,11 +38,12 @@ INSERT INTO Procedures (Title, Procedure_Description, Assigner_ID, Patient_ID)
 VALUES
 ('Transsphenoidal Resection', 'Removal of the tumor is performed through the nasal passage.', 2, 3);
 
-INSERT INTO Monitoring (Monitoring_ID, Assigner_ID, Patient_ID, Post_Datetime, Post_Title, Post_Description, Photo_ID)
+INSERT INTO Monitoring (Assigner_ID, Patient_ID, Post_Datetime, Post_Title, Post_Description, Photo_ID)
 VALUES
-(1, 2, 6, '2022-03-03 10:00:00', 'New Discovery', 'Think I have amnesia, forgot how I found out', null),
-(2, 2, 6, '2022-03-04 10:00:00', 'Another Update', 'Irony deficiency detected, puns aren\'t even funny anymore', null), 
-(3, 2, 6, '2022-03-05 10:00:00', 'Serious Update', 'Help, can\'t stop making jokes in the airport, I think it\'s terminal', null); 
+(2, 6, '2022-03-03 10:00:00', 'New Discovery', 'Think I have amnesia, forgot how I found out', null),
+(2, 6, '2022-03-04 10:00:00', 'Another Update', 'Irony deficiency detected, puns aren\'t even funny anymore', null), 
+(2, 6, '2022-03-05 10:00:00', 'Serious Update', 'Help, can\'t stop making jokes in the airport, I think it\'s terminal', null),
+(2, 3, '2022-03-05 10:00:00', 'Dear Diary', 'Taco cat backwards is Taco cat', null); 
 
 
 
