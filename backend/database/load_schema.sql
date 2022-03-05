@@ -116,7 +116,7 @@ CREATE TABLE PHOTOS (
 	Photo_ID				int not null,   
     Client_ID				int not null,
     Upload_Datetime			datetime,
-    Photo					blob,
+    Photo					longblob,
 
     primary key (Photo_ID),
 	foreign key (Client_ID) references USERS(User_ID)
