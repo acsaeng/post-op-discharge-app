@@ -8,7 +8,7 @@ import Medications from './medications/Medications';
 import Messages from './messages/Messages';
 import Appointments from './appointments/Appointments';
 import Monitoring from './education/Monitoring';
-import Proceedure from './education/Proceedure';
+import Procedure from './education/Procedure';
 import Recovery from './education/Recovery';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
                 <Route path='/user-info' element={<UserInfo/>}/>
                 <Route path='/education' element={<Education/>}/>
                 <Route path='/education/monitoring' element = {<Monitoring/>}/>
-                <Route path='/education/proceedure' element = {<Proceedure/>}/>
+                <Route path='/education/procedure' element = {<Procedure/>}/>
                 <Route path='/education/recovery' element = {<Recovery/>}/>
                 <Route path='/medications' element={<Medications/>}/>
                 <Route path='/messages' element={<Messages/>}/>
