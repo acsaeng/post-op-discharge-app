@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 import './Login.css';
-import ontarioHealthLogo from "../img/ontarioHealthLogo.png";
+import logo from "../img/logo.jpg";
 
 import { useDispatch } from 'react-redux';
 import { updateUserInfo } from '../Reducers/updateUserInfo';
@@ -85,7 +85,7 @@ function Login() {
         <div className="d-flex justify-content-center vw-50 vertical-center" style={{ backgroundColor: "#daecff" }}>
             <div className="d-flex flex-column mx-3 justify-content-center border border-4 border-secondary bg-light shadow">
 
-                <img src={ontarioHealthLogo} alt="Ontario Health Logo" className="mx-auto my-5 w-50"></img>
+                <img src={logo} alt="Ontario Health Logo" className="mx-auto my-5 w-50"></img>
 
                 <form className="w-100" onSubmit={HandleSubmit}>
                     <h1 className="mb-4">Login</h1>
