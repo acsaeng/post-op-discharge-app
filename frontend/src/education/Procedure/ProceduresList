@@ -1,0 +1,34 @@
+import axios from 'axios';
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+export default class ProceduresList extends Component {
+
+    state = {
+        //array holding all the procedures for this patient
+        proceduresList: [],
+
+        //id of current user
+        assignerId: 8, //This needs to be updated to be dynamic!!!
+        patientId: 3
+    }
+
+    //get all procedures for one patient
+    componentDidMount() {
+        axios.get('http://localhost:8081/patientId='+this.state.patientId+'/education/procedures/').then(
+            res => {
+                this.setState({ proceduresList: res.data });
+            }
+        );
+    }
+
+    render() {
+        return (
+            <div className = "overflow-auto">
+                <p>test</p>
+
+            </div>
+        )
+    }
+}

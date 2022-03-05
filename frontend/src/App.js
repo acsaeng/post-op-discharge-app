@@ -9,7 +9,7 @@ import Medications from './medications/Medications';
 import Messages from './messages/Messages';
 import Appointments from './appointments/Appointments';
 import Monitoring from './education/Monitoring';
-import Procedure from './education/Procedure';
+import Procedure from './education/Procedure/Procedure';
 import Recovery from './education/Recovery';
 
 function App() {
