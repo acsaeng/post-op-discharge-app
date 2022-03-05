@@ -30,6 +30,26 @@ public class PhotosRepository {
     public PhotosRepository() {
          this.database = DatabaseConnection.getConnection();
     }
+    
+    public Photos getSinglePhoto(int photoId) {
+    	Photos singlePhoto = null;
+    	
+    	try {
+    		PreparedStatement statement = this.database.prepareStatement("SELECT * FROM PHOTOS AS P WHERE P.Photo_ID=?;");
+    		statement.setInt(1, photoId);
+    		results = statement.executeQuery();
+    		
+    		while (results.next()) {
+    			singlePhoto = new Photos(results.getInt("Photo_ID"), results.getInt("Client_ID"), 
+    					results.getTimestamp("Upload_Datetime").toLocalDateTime().toString().replace('T', ' '), 
+    					results.getBlob("Photo") );
+            }
+    	}catch(Exception e) {
+    		System.out.println(e);
+    	}
+    	
+    	return singlePhoto;
+    }
 
     
     public int addPhoto(MultipartFile multipartFile, int clientId) {
