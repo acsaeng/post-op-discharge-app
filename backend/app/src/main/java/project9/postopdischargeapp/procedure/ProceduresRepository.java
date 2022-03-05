@@ -35,7 +35,6 @@ public class ProceduresRepository {
             // Extract the procedures belonging to one specified user
             while (results.next()) {
             	procedures.add(new Procedures(
-//            			results.getInt("procedure_id"),
                         results.getString("title"),
                         results.getString("procedure_description"),
                         results.getInt("assigner_id"),
@@ -47,6 +46,32 @@ public class ProceduresRepository {
         }
         return procedures;
     }
+    
+    public ArrayList<Procedures> getProceduresByProcedureId(int procedureId) {
+    	ArrayList<Procedures> requestedProcedure = new ArrayList<Procedures>();
+
+        try {
+            // Execute SQL query to retrieve procedures belonging to one specified user
+            PreparedStatement statement = this.database.prepareStatement("SELECT * FROM PROCEDURES "
+            		+ "WHERE Procedure_ID = ?");
+
+            statement.setInt(1, procedureId);
+            results = statement.executeQuery();
+
+            // Extract the procedures belonging to one specified user
+            while (results.next()) {
+            	requestedProcedure.add(new Procedures(
+                        results.getString("title"),
+                        results.getString("procedure_description"),
+                        results.getInt("assigner_id"),
+                        results.getInt("patient_id")));
+            }
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return requestedProcedure;
+	}
     
     public int addProcedure(@RequestBody Procedures newProcedure) {
     	int responseCheck = 0;

@@ -1,4 +1,4 @@
-package project9.postopdischargeapp.procedure;
+package project9.postopdischargeapp.recovery;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Procedures {
+public class Recoveries {
 
     private String title;
     private String description;
@@ -14,7 +14,7 @@ public class Procedures {
     private int patientId;
     
     
-    public Procedures(
+    public Recoveries(
                 @JsonProperty("title") String title, 
                 @JsonProperty("description") String description,
                 @JsonProperty("assignerId") int assignerId,
