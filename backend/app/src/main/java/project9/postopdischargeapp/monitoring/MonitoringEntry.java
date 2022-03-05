@@ -3,6 +3,12 @@ package project9.postopdischargeapp.monitoring;
 import java.sql.Date;
 import java.sql.Blob;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class MonitoringEntry {
     private int _monitoringId;
     private int _assignerId;
@@ -12,15 +18,15 @@ public class MonitoringEntry {
     private String _postDescription;
     private Blob _imageData;
 
-    public MonitoringEntry(int monitoringId,
-                           int assingerId,
-                           int patientId,
-                           Date entryDateTime,
-                           String postTitle,
-                           String postDescription,
-                           Blob imageData){
+    public MonitoringEntry(@JsonProperty("monitoringId") int monitoringId,
+                           @JsonProperty("assignerId") int assignerId,
+                           @JsonProperty("patientId") int patientId,
+                           @JsonProperty("entryDateTime") Date entryDateTime,
+                           @JsonProperty("postTitle") String postTitle,
+                           @JsonProperty("postDescription") String postDescription,
+                           @JsonProperty("imageData") Blob imageData){
         _monitoringId = monitoringId;
-        _assignerId = assingerId;
+        _assignerId = assignerId;
         _patientId = patientId;
         _entryDateTime = entryDateTime;
         _postTitle = postTitle;
