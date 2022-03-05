@@ -19,11 +19,15 @@ export default class MessagesBox extends Component {
         // userId: 8, //This needs to be updated to be dynamic!!!
         // patientId: 8,
         // userType: 'Patient',
-        userId: this.props.senderId, //This needs to be updated to be dynamic!!!
+        // userId: this.props.senderId, //This needs to be updated to be dynamic!!!
+        userId: Number(window.localStorage.getItem("userId")),
         // userId: useSelector(state => state[0]), //ERROR
         // userId: GetUserInfo(), //ERROR
-        patientId: this.props.patientId,
-        userType: this.props.userType,
+        // patientId: this.props.patientId,
+        patientId: Number(window.localStorage.getItem("patientId")),
+        // userType: this.props.userType,
+        userType: window.localStorage.getItem("userType"),
+
 
         //array holding all the messages for this user
         messages: [],
@@ -127,7 +131,8 @@ export default class MessagesBox extends Component {
 
     getAllMessages = () => {
         // console.log('get all messages')
-        let patientId = 8; //This needs to be updated to be dynamic!!!
+        // let patientId = 8; //This needs to be updated to be dynamic!!!
+        let patientId = this.state.patientId; 
 
         axios.get('http://localhost:8081/messages/' + patientId).then(
             res => {
@@ -164,7 +169,30 @@ export default class MessagesBox extends Component {
             <div className="message-box">
                 <div>
                     {this.state.messages.map(messageObj =>
-                        (messageObj.senderId === this.state.userId) ?
+                        // (messageObj.senderId === this.state.userId) ?
+                        //     <div className="d-flex flex-row py-2 mx-2" key={messageObj.messageId}>
+                        //         <div className="message-single bg-primary text-white px-3">
+                        //             {messageObj.message}
+                        //         </div>
+                        //     </div> :
+                        //     <div className="d-flex flex-row py-2 mx-2 justify-content-end" key={messageObj.messageId}>
+                        //         <div className="message-single bg-light px-3">
+                        //             {messageObj.message}
+                        //         </div>
+                        //     </div>
+                        (this.state.userType === "Patient") ?
+                            (messageObj.senderId === this.state.patientId) ?
+                                <div className="d-flex flex-row py-2 mx-2" key={messageObj.messageId}>
+                                    <div className="message-single bg-primary text-white px-3">
+                                        {messageObj.message}
+                                    </div>
+                                </div> :
+                                <div className="d-flex flex-row py-2 mx-2 justify-content-end" key={messageObj.messageId}>
+                                    <div className="message-single bg-light px-3">
+                                        {messageObj.message}
+                                    </div>
+                                </div>:
+                            (messageObj.senderId !== this.state.patientId) ?
                             <div className="d-flex flex-row py-2 mx-2" key={messageObj.messageId}>
                                 <div className="message-single bg-primary text-white px-3">
                                     {messageObj.message}
@@ -175,14 +203,11 @@ export default class MessagesBox extends Component {
                                     {messageObj.message}
                                 </div>
                             </div>
-
-                    )}
+)}
                 </div>
-                <div>
+                {/* <div>
                     <img src={this.state.imgUrls[0]} height="50px"/>
-                    {/* <Image style={{width:50, height:50}} source={{uri: this.state.base64Images[0]}} /> */}
-                        {/* <img src="data:image/"/> */}
-                </div>
+                </div> */}
                 <div ref={(el) => { this.messagesEnd = el; }}></div>
             </div>
         )

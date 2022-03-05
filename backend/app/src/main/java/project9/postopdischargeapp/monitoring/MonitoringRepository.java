@@ -1,6 +1,6 @@
 package project9.postopdischargeapp.monitoring;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 import project9.postopdischargeapp.database.DatabaseConnection;
@@ -71,7 +71,7 @@ public class MonitoringRepository {
         return monitoringEntries;
     }
 
-    @NotNull
+//    @NotNull
     private void addMonitoringEntryToList(List<MonitoringEntry> monitoringEntries) throws SQLException {
         monitoringEntries.add(new MonitoringEntry(results.getInt("monitoring_id"),
                 results.getInt("assigner_id"),
