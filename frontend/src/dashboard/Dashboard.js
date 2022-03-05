@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { FaBook, FaPills, FaCommentAlt, FaCalendarAlt } from 'react-icons/fa'
+import { FaBook, FaCommentAlt, FaCalendarAlt } from 'react-icons/fa'
+import { CgPill } from 'react-icons/cg'
 
 import './Dashboard.css';
 import Navbar from '../navbar/Navbar';
@@ -18,7 +19,7 @@ const Dashboard = () => {
                     </button>
 
                     <button className="menu-option-btn m-1 py-4 btn fw-bold" onClick={() => navigate("/medications")}>
-                        <FaPills /><br/>Medication
+                        <CgPill /><br/>Medication
                     </button>
 
                     <button className="menu-option-btn m-1 py-4 btn fw-bold" onClick={() => navigate("/messages")}>
