@@ -10,7 +10,10 @@ import { useSelector } from 'react-redux';
 const UserInfo = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [userInfo, setUserInfo] = useState({});
-  const [userId, setUserId] = useState(useSelector(state => state[0])); 
+    // userId: Number(window.localStorage.getItem("userId"));
+
+//   const [userId, setUserId] = useState(useSelector(state => state[0])); 
+  const [userId, setUserId] = useState(Number(window.localStorage.getItem("userId"))); 
 
 
     function loadUserData() {

@@ -87,7 +87,7 @@ public class MedicineRepository {
         			+ "(Medicine_ID, Title, Dose, Duration, Frequency, Assigner_ID, Patient_ID) VALUES "
     				+ "(?, ?, ?, ?,?,?,?)");
     		
-        	statement.setInt(1, newMedicine.getID());
+        	statement.setInt(1, newMedicine.getId());
     		statement.setString(2, newMedicine.getName());
     		statement.setString(3, newMedicine.getDose());
     		statement.setString(4, newMedicine.getDuration());
@@ -122,18 +122,18 @@ public class MedicineRepository {
 	 * @param med
 	 */
 	public void updateItem(Medicine med) {
-		
-		PreparedStatement statement = this.database.prepareStatement("UPDATE Medicine" + " SET MEDICINEID = ?, NAME = ?, DOSE = ?,"
-				+ "DURATION = ?, FREQUENCY = ?, ASSIGNERID = ?, ASSIGNEEID = ? WHERE MEDICINEID = ?");
 		try {
-			statement.setInt(1, med.getID());
+			PreparedStatement statement = this.database.prepareStatement("UPDATE Medicine" + " SET MEDICINEID = ?, NAME = ?, DOSE = ?,"
+					+ "DURATION = ?, FREQUENCY = ?, ASSIGNERID = ?, ASSIGNEEID = ? WHERE MEDICINEID = ?");
+
+			statement.setInt(1, med.getId());
 			statement.setString(2, med.getName());
 			statement.setString(3, med.getDose());
 			statement.setString(4, med.getDuration());
 			statement.setString(5, med.getFrequency());
 			statement.setInt(6, med.getAssigner());
 			statement.setInt(7, med.getAssignee());
-			statement.setInt(8, med.getID());
+			statement.setInt(8, med.getId());
 
 			statement.executeUpdate();
 
