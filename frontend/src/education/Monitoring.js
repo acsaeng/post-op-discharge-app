@@ -4,14 +4,15 @@ import Navbar from '../navbar/Navbar'
 import MonitoringList from './monitoringComponents/MonitoringList'
 
 const Monitoring = () => {
-    const [userView, setUserView] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const[patientData, setPatientData] = useState([]);
-    const patientId = 6;//update this later
+    const assignerId = window.localStorage.getItem("userId"); 
+    const patientId = window.localStorage.getItem("patientId"); 
+    const userType = window.localStorage.getItem("userType");
 
-    let url = 'http://localhost:8081/education/monitoring/patient/'+ patientId;
+
+    let url = 'http://localhost:8081/education/monitoring/patient/'+patientId;
     useEffect(()=>{
-        console.log('using effect')
         fetch(url)
         .then(response =>{
             return response.json()
@@ -27,7 +28,6 @@ const Monitoring = () => {
                 entries.push(entry); 
             }
             setPatientData(entries);
-            console.log(entries)
         }).catch(err => console.log(err));
     },[])
 
@@ -44,7 +44,7 @@ const Monitoring = () => {
     return (
         <div className='h-100'>
             <Navbar />
-            <section>
+            <section className = 'd-flex align-items-center'>
                 <MonitoringList entires = {patientData}/>
             </section>
         </div>
