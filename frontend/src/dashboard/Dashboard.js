@@ -26,7 +26,7 @@ function Dashboard() {
 
     // senderId = window.localStorage.getItem("senderId");
     // userType = window.localStorage.getItem("userType");
-    const [senderId, setSenderId] = useState(window.localStorage.getItem("senderId")); 
+    const [senderId, setSenderId] = useState(window.localStorage.getItem("userId")); 
     const [userType, setUserType] = useState( window.localStorage.getItem("userType")); 
 
     // const [senderId, setSenderId] = useState(useSelector(state => state[0])); 
