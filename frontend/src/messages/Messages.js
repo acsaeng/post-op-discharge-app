@@ -98,7 +98,7 @@ function Messages() {
                 </div>
             </IconContext.Provider>
 
-            <input className="message-input mx-2 my-2 w-100" id="messageInput" type="text" required onChange={getData} onKeyDown={handleKeyDown} size="100" placeholder="   Enter a message" />
+            <input className="message-input mx-2 my-2 w-100 px-3" id="messageInput" type="text" required onChange={getData} onKeyDown={handleKeyDown} size="100" placeholder="Enter a message" />
             <button className="btn btn-secondary mx-2 my-2 message-send" type="submit" onClick={clickButton}>Send</button>
         </label>
         
