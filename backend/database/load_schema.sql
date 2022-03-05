@@ -56,15 +56,17 @@ CREATE TABLE RECOVERY (
 DROP TABLE IF EXISTS MONITORING; 
 CREATE TABLE MONITORING ( 
 	Monitoring_ID		int not null,
-    
-    # ADD ADDITIONAL INFO
-    
-    Assigner_ID					int not null,
-    Patient_ID					int not null,
+    Assigner_ID			int not null,
+    Patient_ID			int not null,
+    Post_Datetime		datetime not null,
+    Post_Title			varchar(100),
+    Post_Description	varchar(1000) not null,
+    Photo_ID			int,
 
     primary key (Monitoring_ID),
 	foreign key (Assigner_ID) references USERS(User_ID),
-    foreign key (Patient_ID) references USERS(User_ID) 
+    foreign key (Patient_ID) references USERS(User_ID),
+    foreign key (Photo_ID) references PHOTOS(Photo_ID)
 );
 
 DROP TABLE IF EXISTS MEDICATION; 
