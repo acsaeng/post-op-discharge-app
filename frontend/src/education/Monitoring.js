@@ -1,9 +1,54 @@
-import React from 'react'
+import axios from 'axios';
+import React, {useState, useEffect }from 'react'
+import Navbar from '../navbar/Navbar'
+import MonitoringList from './monitoringComponents/MonitoringList'
 
 const Monitoring = () => {
-  return (
-    <div>Monitoring</div>
-  )
+    const [userView, setUserView] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+    const[patientData, setPatientData] = useState([]);
+    const patientId = 6;//update this later
+
+    let url = 'http://localhost:8081/education/monitoring/patient/'+ patientId;
+    useEffect(()=>{
+        console.log('using effect')
+        fetch(url)
+        .then(response =>{
+            return response.json()
+        }).then((data)=>{
+            const entries = [];
+            for (const key in data){
+                console.log(key);
+                const entry ={
+                    id: key,
+                    ...data[key],
+                };
+                console.log(entry);
+                entries.push(entry); 
+            }
+            setPatientData(entries);
+            console.log(entries)
+        }).catch(err => console.log(err));
+    },[])
+
+    function LoadAssignerMonitoringData(){
+        const assignerId = 2;//update this later
+        useEffect(()=>{
+            axios.get('http://localhost:8081/education/monitoring/assigner/'+assignerId)
+            .then(response =>{
+                setPatientData(response.data);
+            }).catch(err => console.log(err));
+        },[])
+    }
+
+    return (
+        <div className='h-100'>
+            <Navbar />
+            <section>
+                <MonitoringList entires = {patientData}/>
+            </section>
+        </div>
+    )
 }
 
 export default Monitoring

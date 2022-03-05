@@ -45,10 +45,10 @@ These stents will be removed at the ENT clinic', '', 2, 3);
 
 INSERT INTO Monitoring (Assigner_ID, Patient_ID, Post_Datetime, Post_Title, Post_Description, Photo_ID)
 VALUES
-(2, 6, '2022-03-03 10:00:00', 'New Discovery', 'Think I have amnesia, forgot how I found out', null),
-(2, 6, '2022-03-04 10:00:00', 'Another Update', 'Irony deficiency detected, puns aren\'t even funny anymore', null), 
-(2, 6, '2022-03-05 10:00:00', 'Serious Update', 'Help, can\'t stop making jokes in the airport, I think it\'s terminal', null),
-(2, 3, '2022-03-05 10:00:00', 'Dear Diary', 'Taco cat backwards is Taco cat', null); 
+(2, 6, '2022-03-03 10:00:00', 'Be Cautious Of This', 'Some patients may experience a bit of amnesia, they all forgot how they found out', null),
+(2, 6, '2022-03-04 10:00:00', 'New Item to Monitor', 'Watch for irony deficiency, symptoms may include not laughing at my jokes', null), 
+(2, 6, '2022-03-05 10:00:00', 'Serious Update', 'Can\'t stop making jokes in the airport, I think it\'s terminal', null),
+(2, 3, '2022-03-05 10:00:00', 'May See Signs of This', 'Taco cat backwards is Taco cat', null); 
 
 INSERT INTO Medicine (Medicine_ID, Title, Dose, Duration, Frequency, Assigner_ID, Patient_ID)
 VALUES
