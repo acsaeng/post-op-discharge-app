@@ -12,8 +12,29 @@ import Monitoring from './education/Monitoring';
 import Procedure from './education/Procedure';
 import Recovery from './education/Recovery';
 
+import {createStore, combineReducers} from 'redux';
+import { Provider} from 'react-redux';
+
+import loginReducer from './Reducers/loginReducer'
+
 function App() {
+//  //Reducer for saving the global state
+//     const storeUserId = (state=[0, 0, '']) =>{ return state}
+//     const storePatientId = (state=0) =>{return state}
+//     const storeUserType = (state='') =>{return state}
+
+//     const allReducers = combineReducers({
+//         userId: storeUserId,
+//         patientId:storePatientId,
+//         userType:storeUserType
+//     })
+
+    let store = createStore(loginReducer,  
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  
+
   return (
+    <Provider store={store}>
     <div style={{height: "100vh"}}>
         <Router>
             <Routes>
@@ -31,6 +52,7 @@ function App() {
             </Routes>
         </Router>
     </div>
+    </Provider>
         
   );
 }

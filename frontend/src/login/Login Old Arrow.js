@@ -1,40 +1,35 @@
-// import { React, useState } from 'react'
-import { useState } from 'react'
+import { React, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 import './Login.css';
 import ontarioHealthLogo from "../img/ontarioHealthLogo.png";
 
 import { useDispatch } from 'react-redux';
-import { updateUserInfo } from '../Reducers/updateUserInfo';
 
 
-function Login(){
+const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    function HandleSubmit(event) {
-        event.preventDefault();
+    
+    function handleSubmit(event) {
         //add in the GET for checking the user login
 
 
-        
+
+
 
         //assume successful login
-        let userId = 80000;
-        let patientId = 800000;
+        let userId = 8;
+        let patientId = 8;
         let userType = 'Patient';
 
-        // navigate("/dashboard")
+        let arrUserInfo = [userId, patientId, userType]
+        // const dispatch = useDispatch();
+        // dispatch()
 
-        let arrUserInfo = [userId, patientId, userType];
-        dispatch({type:"LOGGED IN", userInfo: arrUserInfo});
-    
 
-        navigate("/dashboard")
 
 
 
@@ -55,8 +50,8 @@ function Login(){
         // let store = createStore(allReducers,  
         //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-        
-        // return;
+        navigate("/dashboard")
+        return;
     }
 
 
@@ -67,15 +62,15 @@ function Login(){
 
             <img src={ontarioHealthLogo} alt="Ontario Health Logo" className="mx-auto my-5 w-50"></img>
 
-            <form className="w-100" onSubmit={HandleSubmit}>
+            <form className="w-100" onSubmit={handleSubmit}>
                 <h1 className="mb-4">Login</h1>
                 <input type="username" className="form-control w-75 mb-2 mx-auto" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
                 <input type="password" className="form-control w-75 mb-4 mx-auto" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                <button className="btn text-light fw-bold mb-4" style={{backgroundColor: "#162a53"}} type="submit" onClick={(e) => HandleSubmit(e)}>Log In</button>
+                <button className="btn text-light fw-bold mb-4" style={{backgroundColor: "#162a53"}} type="submit" onClick={(e) => handleSubmit(e)}>Log In</button>
             </form>
         </div>
     </div>
   )
 }
 
-export default Login;
+export default Login

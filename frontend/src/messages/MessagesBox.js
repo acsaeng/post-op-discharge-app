@@ -5,14 +5,25 @@ import React, { Component } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Messages.css';
 import { resolvePath } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+// function GetUserInfo() {
+//     let userId = useSelector(state => state[0]);
+//     return userId;
+// }
 
 export default class MessagesBox extends Component {
 
     state = {
         //id of current user
-        userId: 8, //This needs to be updated to be dynamic!!!
-        patientId: 8,
+        // userId: 8, //This needs to be updated to be dynamic!!!
+        // patientId: 8,
+        // userType: 'Patient',
+        userId: this.props.senderId, //This needs to be updated to be dynamic!!!
+        // userId: useSelector(state => state[0]), //ERROR
+        // userId: GetUserInfo(), //ERROR
+        patientId: this.props.patientId,
+        userType: this.props.userType,
 
         //array holding all the messages for this user
         messages: [],
@@ -23,18 +34,26 @@ export default class MessagesBox extends Component {
 
     //get all messages for one patient
     componentDidMount() {
+        // let userId =  useSelector(state => state[0]); //error
+        console.log('At the very top of the console log upon mounting messagesbox')
+        console.log(this.state.userId)
+        // this.state.userId = useSelector(state => state.userId);
+        // this.state.patientId = useSelector(state => state.patientId);
+        // this.state.userType = useSelector(state => state.userType);
+        
         this.getAllMessages();
         // this.scrollToBottom();
         this.messagesEnd.scrollIntoView({ behavior: "auto" });
         console.log('Mounted component, loaded the messages the 1st time')
 
         this.getAnyPhotos()
+        
         setInterval(this.getAllMessages, 1000)
 
     }
 
     getAnyPhotos = () => {
-        let photoId = 4; // this needs to be replaced. search through messages array and see if any message has photoId
+        let photoId = 1; // this needs to be replaced. search through messages array and see if any message has photoId
 
 
         axios.get('http://localhost:8081/photos/' + photoId).then(
