@@ -25,13 +25,25 @@ button[type=submit].message-send{
     border-radius: 25px;
   }
 
-  input.message-input{
+input.message-input{
     border-radius: 25px;
-  }
+}
 
-  div.cam-wrapper{
+div.cam-wrapper{
     display:flex;
     align-items: center;
     color:blue
-  }
-  
+}
+
+.message-single{
+    display:inline-block;
+    /* min-width:100px; */
+    border-radius:25px;
+    font-size:25px;
+}
+
+
+.message-container{
+    display:block;
+}
+
