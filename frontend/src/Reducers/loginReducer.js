@@ -8,9 +8,10 @@ const loginReducer = (state=[], action) => {
             state = action.userInfo
             return state;
         default:
-            state=[8, 8, 'Patient']
-            console.log('initial state')
-            console.log(state)
+            // state=[8, 8, 'Patient']
+            state=[0, 0, 'Awaiting Login from loginReducer.js']
+            // console.log('initial state')
+            // console.log(state)
             return state;
     }
 }
