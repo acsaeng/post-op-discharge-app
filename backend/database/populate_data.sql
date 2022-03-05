@@ -7,7 +7,7 @@ VALUES
 (5, 'Nurse', 'Blue', 'Alana', 'Pierscianowski', 'F', '1994-10-15', '(905) 759-5784', 'alana.pierscianowski@ontariohealth.ca', 'alana'),
 (6, 'Patient', 'Red', 'Aron', 'Saengchan', 'M', '1996-03-24', '(365) 229-7587', 'aron.saengchan@ontariohealth.ca', 'aron'),
 (7, 'Doctor', 'Blue', 'Simon', 'Zhong', 'M', '1992-03-10', '(807) 385-9875', 'simon.zhong@ontariohealth.ca', 'simon'),
-(8, 'Patient', 'Red', 'Jimmy', 'Zhu', 'M', '1995-12-08', '(226) 485-7963', 'jimmy.zhu@ontariohealth.ca', 'jimmy');
+(8, 'Patient', 'Red', 'Jimmy', 'Zhu', 'M', '1995-12-08', '(226) 485-7963', 'test', 'jimmy');
 
 
 INSERT INTO Messages (Message_ID, Datetime_Sent, Message, Attachment_id, Sender_ID, Patient_ID)

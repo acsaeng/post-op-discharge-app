@@ -59,8 +59,7 @@ public class PhotosRepository {
     
     public int addPhoto(MultipartFile multipartFile, int clientId) {
     	int responseCheck =0;
-    	System.out.println("inside the service -> addPhoto");
-    	
+//    	System.out.println("inside the service -> addPhoto");
     	
     	
     	try {

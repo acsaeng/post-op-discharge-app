@@ -10,6 +10,9 @@ import { FaCamera } from "react-icons/fa";
 import Navbar from '../navbar/Navbar';
 import MessagesBox from './MessagesBox';
 
+import { useSelector } from 'react-redux';
+
+
 
 
 // export default class Messages extends Component{
@@ -18,8 +21,17 @@ function Messages() {
   const [message, setData] = useState('');
   const [originalVal, setOriginalVal] = useState('');
 
-  const [senderId, setSenderId] = useState(8); //This needs to be updated to be dynamic!!!
-  const [patientId, setPatientId] = useState(8); //This needs to be updated to be dynamic!!!
+  // const [senderId, setSenderId] = useState(8); //This needs to be updated to be dynamic!!!
+  // const [patientId, setPatientId] = useState(8); //This needs to be updated to be dynamic!!!
+  // const [userType, setUserType] = useState('Patient'); //This needs to be updated to be dynamic!!!
+
+  // this.state.userId = useSelector(state => state.userId);
+  // this.state.patientId = useSelector(state => state.patientId);
+  // this.state.userType = useSelector(state => state.userType);
+
+  const [senderId, setSenderId] = useState(useSelector(state => state[0])); 
+  const [patientId, setPatientId] = useState( useSelector(state => state[1])); 
+  const [userType, setUserType] = useState( useSelector(state => state[2])); 
 
   //update the state on change
   function getData(val) {
@@ -94,7 +106,7 @@ function Messages() {
     <div className="h-100" stle={{ "overflow": "hidden" }}>
       <Navbar />
 
-      <MessagesBox />
+      <MessagesBox patientId={patientId} senderId={senderId} userType={userType}/>
 
       <label className="d-flex flex-row input-field">
         <IconContext.Provider value={{ className: 'camera-icon' }}>
