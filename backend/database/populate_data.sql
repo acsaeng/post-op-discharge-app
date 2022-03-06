@@ -50,11 +50,11 @@ VALUES
 (2, 6, '2022-03-05 10:00:00', 'Serious Update', 'Help, can\'t stop making jokes in the airport, I think it\'s terminal', null),
 (2, 3, '2022-03-05 10:00:00', 'Dear Diary', 'Taco cat backwards is Taco cat', null); 
 
--- INSERT INTO Medication (Medicine_ID, Title, Dose, Duration, Frequency, Assigner_ID, Patient_ID)
--- VALUES
--- (1,'Medicine_1', '3 mg', '1 hour', '2 weeks','2','3'),
--- (2,'Medicine_2', '5 mg', '1 hour', '4 weeks','2','3'),
--- (3,'Medicine_3', '3 mg', '1 hour', '2 weeks','7','6');
+INSERT INTO Medication (Medication_ID, Title, Dose, Duration, Frequency, Assigner_ID, Patient_ID)
+VALUES
+(1,'Medicine_1', '3 mg', '1 hour', '2 weeks','2','3'),
+(2,'Medicine_2', '5 mg', '1 hour', '4 weeks','2','3'),
+(3,'Medicine_3', '3 mg', '1 hour', '2 weeks','7','6');
 
 
 
