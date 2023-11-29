@@ -4,6 +4,6 @@
 
 ## Summary
 
-A post-op discharge app allowing hospital staff to view the status and manage the treatments of their patients. This hackation was hosted as part of a course requirement on March 5, 2022.
+A post-op discharge web application allowing hospital staff to view the status and manage the treatments of their patients. This hackation was hosted as part of a course requirement on March 5, 2022.
 
 _This project was completed as part of ENSF 609/610: Team Design Project in Software Engineering._
